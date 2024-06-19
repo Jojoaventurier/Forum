@@ -27,6 +27,11 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
+    public function listTopics() {
+
+        return var_dump('bonjour');
+    }
+
     public function listTopicsByCategory($id) {
 
         $topicManager = new TopicManager();
