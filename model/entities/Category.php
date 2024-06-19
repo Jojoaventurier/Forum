@@ -10,7 +10,7 @@ use App\Entity;
 final class Category extends Entity{
 
     private $id;
-    private $name;
+    private $categoryName;
 
     // chaque entité aura le même constructeur grâce à la méthode hydrate (issue de App\Entity)
     public function __construct($data){         
@@ -40,7 +40,7 @@ final class Category extends Entity{
     /**
      * Get the value of name
      */ 
-    public function getName(){
+    public function getCategoryName(){
         return $this->name;
     }
 
@@ -49,7 +49,7 @@ final class Category extends Entity{
      *
      * @return  self
      */ 
-    public function setName($name){
+    public function setCategoryName($name){
         $this->name = $name;
         return $this;
     }
