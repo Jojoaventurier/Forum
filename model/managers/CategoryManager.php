@@ -14,9 +14,7 @@ class CategoryManager extends Manager{
         parent::connect();
     }
 
-    /*public function findCategoryOfTopic($id) {
 
-    }*/
 
 
 }
