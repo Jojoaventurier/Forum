@@ -1,12 +1,12 @@
 <?php
-    $categories = $result["data"]['topics']; 
+    $topics = $result["data"]['topics']; 
 ?>
 
-<h1>Liste des topics</h1>
+<h1>Liste des topics par catégories</h1>
 
 <?php 
-
-foreach($categories as $tcategory ){ //var_dump($topic) ?> 
-
-    <p><a href="#"><?= $category ?></a> <a href="#" ><?= $category?></a></p>
+    var_dump($topics);
+foreach($topics as $topic ){ //var_dump($topic) ?> 
+    <h2><a href="#"><?= $topic->getCategory() ?></a></h2>
+    <p> <a href="#" ><?= $topic->listTopicsByCategory($topic->getCategory()->getId()) ?></a></p>
 <?php }

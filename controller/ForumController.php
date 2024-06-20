@@ -75,6 +75,21 @@ class ForumController extends AbstractController implements ControllerInterface{
                 "users" => $users
             ]
         ];
-
     }
+
+    public function listTopicsByCategories() {
+
+        $topicManager = new TopicManager();
+        $categoryManager = new CategoryManager();
+        $topics = $topicManager->findAll();
+
+        return [
+            "view" => VIEW_DIR."forum/listTopicsByCategories.php",
+            "meta_description" => "Liste des topics par catégories",
+            "data" => [
+                "topics" => $topics
+            ]
+        ];
+    }
+
 }

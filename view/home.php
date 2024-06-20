@@ -7,4 +7,5 @@
     <a href="index.php?ctrl=security&action=register">S'inscrire</a>
     <a href="index.php?ctrl=forum&action=listTopics">Liste des topics</a>
     <a href="index.php?ctrl=forum&action=listUsers">Liste des utilisateurs</a>
+    <a href="index.php?ctrl=forum&action=listTopicsByCategories">Liste des topics par catégorie</a>
 </p>
