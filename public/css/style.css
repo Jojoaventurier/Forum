@@ -8,17 +8,32 @@ h1 {
     color: rgb(139, 90, 185);
 }
 
+
+/*=========================== LAYOUT ===================== */
+
 #wrapper {
     height: 100vh;
-
+    /* width: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
+
+/*--------------------- Mainpage ---------------------*/
+
+
+#mainpage {
+    height: 100%;
+    width: 100%;
+}
+
+/*--------- Header ---------*/
+
+/**/
 nav {
-    height: 10rem;
+    height: 5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -39,10 +54,25 @@ nav {
     padding: 10px 10px;
 }
 
+
+/*--------- Main #forum ---------*/
+
+
 #forum {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 90%;
+}
 
+
+
+/*--------- Footer ---------*/
+
+footer {
+    display: flex;
+    height: 3rem;
+    align-items: center;
 }
 
