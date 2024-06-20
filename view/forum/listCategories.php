@@ -7,13 +7,20 @@
 
     <h1>Liste des catégories</h1>
 
-    <div class="categoryBoard">
+    <div id="categoryBoard" class="board">
         <?php
         foreach($categories as $category ){  ?>
 
 
             <div class="categoryCard">
-                <h3><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getCategoryName() ?></a></h3>
+                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                    <div class="cardTitle">
+                        <h4>
+                            <?= $category->getCategoryName() ?>
+                        </h4>
+                    </div>
+                </a>
+                <p>derniers topics</p>
             </div>
         
         

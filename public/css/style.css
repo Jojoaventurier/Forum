@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins';
 }
 
 h1 {
@@ -63,6 +66,14 @@ h1 {
     margin: 15px 0;
 }
 
+.board {
+    display: flex;
+    flex-wrap: wrap;
+
+    height : 100%;
+    padding: 30px 0;
+}
+
 
 #forum {
     display: flex;
@@ -96,18 +107,79 @@ footer {
     padding: 0 10px;
 }
 
-.categoryBoard {
+
+.cardTitle {
+
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30%;
+    width: 100%;
+
+    background-color: rgb(46, 46, 46);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+#categoryBoard {
     justify-content: space-around;
+}
+
+#categoryBoard a {
+    text-decoration: none;
+}
+
+.cardTitle {
+    text-decoration: none;
+    color: white;
+}
+
+.cardTitle:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+
+}
+
+h4 {
+    padding: 10px 0;
 }
 
 .categoryCard {
     /* border: solid 2px black; */
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 200px;
 
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 
 
+
+/*=========================== LIST TOPICS BY CATEGORY ===================== */
+
+#topicBoard {
+    display: block;
+}
+
+#topicBoard h4 {
+    margin-left: 10px;
+}
+
+#topicBoard a {
+    text-decoration: none;
+    color: black;
+}
+#topicBoard a :hover {
+    background-color: rgb(248, 248, 248);
+}
+
+
+.topicCard {
+    width: 80%;
+    height: 120px;
+    margin: 20px 0;
+
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
