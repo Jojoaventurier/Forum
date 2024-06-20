@@ -1,5 +1,5 @@
 <?php
-    $category = $result["data"]['category']; 
+    //$category = $result["data"]['category']; 
     $topics = $result["data"]['topics']; 
 ?>
 
@@ -7,5 +7,5 @@
 
 <?php
 foreach($topics as $topic ){ ?>
-    <p><a href="#"><?= $topic ?></a> par <?= $topic->getUser() ?></p>
+    <p><a href="#"><?= $topic ?></a> par <?= $topic->getUser() ?> // <a href="#"><?= $category = $topic->getCategory() ?></a></p>
 <?php }

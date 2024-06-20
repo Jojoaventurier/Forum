@@ -28,14 +28,20 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function listTopics() {
+    public function listTopics($id) {
 
         $topicManager = new TopicManager();
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
 
         return [
             "view" => VIEW_DIR."forum/listTopics.php",
             "meta_description" => "Liste de tous les topics du forum",
-            "data" => [ "topics" => $topicManager->findAll(["creationdate", "DESC"])]
+            "data" => [ 
+                "topics" => $topicManager->findAll(["creationdate", "DESC"]),
+                "categories" => $categories,
+                //"user" => $user
+            ]
         ];       
     }
 
