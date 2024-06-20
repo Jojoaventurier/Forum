@@ -39,7 +39,7 @@
                                 ?>
                                 <a class="nav-link" href="index.php?ctrl=security&action=login">Connexion</a>
                                 <a class="nav-link" href="index.php?ctrl=security&action=register">Inscription</a>
-                                <a class="nav-link" href="index.php?ctrl=forum&action=index">Liste des catégories</a>
+                               <!-- <a class="nav-link" href="index.php?ctrl=forum&action=index">Liste des catégories</a> -->
                             <?php
                             }
                         ?>
