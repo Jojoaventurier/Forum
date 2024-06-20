@@ -52,7 +52,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $topics = $topicManager->findTopicsByCategory($id);
 
         return [
-            "view" => VIEW_DIR."forum/listTopics.php",
+            "view" => VIEW_DIR."forum/listTopicsByCategory.php",
             "meta_description" => "Liste des topics par catégorie : ".$category,
             "data" => [
                 "category" => $category,
@@ -76,20 +76,4 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
-
-    public function listTopicsByCategories() {
-
-        $topicManager = new TopicManager();
-        $categoryManager = new CategoryManager();
-        $topics = $topicManager->findAll();
-
-        return [
-            "view" => VIEW_DIR."forum/listTopicsByCategories.php",
-            "meta_description" => "Liste des topics par catégories",
-            "data" => [
-                "topics" => $topics
-            ]
-        ];
-    }
-
 }
