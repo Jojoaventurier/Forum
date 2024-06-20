@@ -28,4 +28,18 @@ class TopicManager extends Manager{
             $this->className
         );
     }
+
+
+    public function findCategoryOfTopic($id) {
+
+        $sql = "SELECT name
+                FROM ".$this->tableName." 
+                WHERE id_topic = :id";
+
+        return $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id]),
+            $this->className
+        );
+
+    }
 }

@@ -11,6 +11,7 @@ final class Category extends Entity{
 
     private $id;
     private $name;
+    // private $topics = []; ??
 
     // chaque entité aura le même constructeur grâce à la méthode hydrate (issue de App\Entity)
     public function __construct($data){         

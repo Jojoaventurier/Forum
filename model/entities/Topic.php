@@ -71,6 +71,18 @@ final class Topic extends Entity{
         return $this;
     }
 
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
      /**
      * Get the value of category
      */ 
@@ -84,4 +96,6 @@ final class Topic extends Entity{
     }
 
    
+
+    
 }
