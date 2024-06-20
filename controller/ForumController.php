@@ -34,9 +34,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $topicManager = new TopicManager();
         $userManager = new UserManager();
         $topics = $topicManager->findAll(["creationdate", "DESC"]);
-        //$categoryManager = new CategoryManager();
-        //$categories = $categoryManager->findAll();
-
+        
         return [
             "view" => VIEW_DIR."forum/listTopics.php",
             "meta_description" => "Liste de tous les topics du forum",
