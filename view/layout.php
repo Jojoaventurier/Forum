@@ -19,7 +19,7 @@
                 <header>
                     <nav>
                         <div id="nav-left">
-                            <a href="/">Accueil</a>
+                            <a class="nav-link" href="/">Accueil</a>
                             <?php
                             if(App\Session::isAdmin()){
                                 ?>
@@ -31,15 +31,15 @@
                             // si l'utilisateur est connecté 
                             if(App\Session::getUser()){
                                 ?>
-                                <a href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                                <a class="nav-link" href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                                <a class="nav-link" href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php
                             }
                             else{
                                 ?>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
-                                <a href="index.php?ctrl=security&action=register">Inscription</a>
-                                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
+                                <a class="nav-link" href="index.php?ctrl=security&action=login">Connexion</a>
+                                <a class="nav-link" href="index.php?ctrl=security&action=register">Inscription</a>
+                                <a class="nav-link" href="index.php?ctrl=forum&action=index">Liste des catégories</a>
                             <?php
                             }
                         ?>
