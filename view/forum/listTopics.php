@@ -5,9 +5,9 @@
 
 <h1>Liste des topics</h1>
 
-<?php
+<?php 
 
-foreach($topics as $topic ){ //var_dump($topic)?>
+foreach($topics as $topic ){ var_dump($topic)?>
 
-    <p><a href="#"><?= $topic ?></a> par <?= $topic->getUser() ?> // <a href="#"><?= $topic->getCategoryName() ?></a></p>
+    <p><a href="#"><?= $topic ?></a> par <?= $topic->getUser() ?> // <a href="#"><?= var_dump($topic->getCategoryName()) ?></a></p>
 <?php }

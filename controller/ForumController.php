@@ -32,16 +32,14 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function listTopics() {
 
         $topicManager = new TopicManager();
-        $userManager = new UserManager();
-        $topics = $topicManager->findAll(["creationdate", "DESC"]);
+        $userManager = new UserManager()
+;       $topics = $topicManager->findAll(["creationdate", "DESC"]);
         
         return [
             "view" => VIEW_DIR."forum/listTopics.php",
             "meta_description" => "Liste de tous les topics du forum",
             "data" => [ 
-                "topics" => $topics,
-                //"categories" => $categories,
-                //"users" => $users
+                "topics" => $topics
             ]
         ];       
     }
@@ -61,5 +59,22 @@ class ForumController extends AbstractController implements ControllerInterface{
                 "topics" => $topics
             ]
         ];
+    }
+
+
+    public function listUsers() {
+
+        $userManager = new UserManager();
+
+        $users = $userManager->findAll(["registrationDate", "DESC"]);
+
+        return [
+            "view" => VIEW_DIR."forum/listUsers.php",
+            "meta_description" => "Liste de tous les utilisateurs du forum",
+            "data" => [ 
+                "users" => $users
+            ]
+        ];
+
     }
 }
