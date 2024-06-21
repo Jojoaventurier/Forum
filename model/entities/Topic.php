@@ -91,12 +91,29 @@ final class Topic extends Entity{
         return $this->category;
     }
 
+    /**
+     * Get the value of creationDate
+     */ 
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
 
+    /**
+     * Set the value of creationDate
+     *
+     * @return  self
+     */ 
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    
     public function __toString(){
         return $this->title;
     }
 
-   
-
-    
 }

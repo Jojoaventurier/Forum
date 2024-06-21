@@ -3,7 +3,7 @@
     $topics = $result["data"]['topics']; 
 ?>
 
-<h1>Liste des topics de la catégorie<br> <span><?= $category->getCategoryName() ?></span></h1>
+<h1><?= $category->getCategoryName() ?></h1>
 
 
 <div class="centered">
@@ -16,7 +16,7 @@
             <div class="topicCard">
               <div class="topicTitle">
                 <h4><?=$topic->getTitle()?></h4>
-                <p class = "redigepPar">par <?= $topic->getUser() ?></p>
+                <p class = "redigepPar"> créé par <?= $topic->getUser() ?> le <?= $topic->getCreationDate() ?></p>
               </div>  
             </div>
           </a>

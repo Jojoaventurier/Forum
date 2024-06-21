@@ -11,24 +11,27 @@
     <div id="postsBoard" class="board">
         <?php 
 
-        foreach($posts as $post ){ //var_dump($post) ?> 
+        if (is_null($posts) == true ) {
+            echo "Il n'y a pas encore de messages dans ce topic..";
+        } else {
 
-            
-            
-                    <div class="postCard">
-                        <div class="postText">
-                            <p><?= $post->getCreationDate()?></p>
-                            <h4>Posté par <?= $post->getUser() ?></h4>
-                            
+                foreach($posts as $post ){  ?>
 
-                            <div class='textBox'>
-                                <p> <?= $post->getText() ?><p>
+                            <div class="postCard">
+                                <div class="postText">
+                                    <p><?= $post->getCreationDate()?></p>
+                                    <h4>Posté par <?= $post->getUser() ?></h4>
+                                    
+
+                                    <div class='textBox'>
+                                        <p> <?= $post->getText() ?><p>
+                                    </div>
+
+                                </div>  
                             </div>
-
-                        </div>  
-                    </div>
-                </a>
-        <?php } ?>
+                        </a>
+                <?php } 
+        } ?>
     </div>
 
 </div>
