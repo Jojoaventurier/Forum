@@ -61,7 +61,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
-    public function listPostsbyTopic($id) {
+    public function listPostsByTopic($id) {
 
         $topicManager = new TopicManager();
         $postManager = new PostManager();
