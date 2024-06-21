@@ -95,4 +95,23 @@ class ForumController extends AbstractController implements ControllerInterface{
             ]
         ];
     }
+
+
+
+
+
+    public function addCategory() {
+
+        $categoryManager = new CategoryManager;
+        var_dump($_POST);
+
+        if (isset($_POST["submit"])) {
+
+            $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+            return $categoryManager->add($category);
+        }
+
+    }
 }

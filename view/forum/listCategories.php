@@ -9,28 +9,25 @@
 
     <div id="categoryBoard" class="board">
         <?php
-        foreach($categories as $category ){  ?>
+            foreach($categories as $category ){  ?>
 
-                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
-                    <div class="cardTitle">
-                        <h4>
-                            <?= $category->getCategoryName() ?>
-                        </h4>
-                    </div>
-                </a>
-              
-        
-        
-        
-        <?php 
-        } ?>
+                    <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                        <div class="cardTitle">
+                            <h4>
+                                <?= $category->getCategoryName() ?>
+                            </h4>
+                        </div>
+                    </a>
+        <?php } ?>
     </div>
+
     <div class='formBox'>
-        <form action="" method="post">
+
+        <form action="index.php?ctrl=forum&action=addCategory" method="post">
+
             <label for="addCategory"> Ajouter une catégorie</label>
             <input type="text" name="category">
             <input name='submit' type='submit'>
-
 
         </form>
     </div>
