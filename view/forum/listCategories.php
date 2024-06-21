@@ -11,8 +11,6 @@
         <?php
         foreach($categories as $category ){  ?>
 
-
-            <div class="categoryCard">
                 <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
                     <div class="cardTitle">
                         <h4>
@@ -20,8 +18,7 @@
                         </h4>
                     </div>
                 </a>
-                <p>derniers topics</p>
-            </div>
+              
         
         
         
