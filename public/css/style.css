@@ -11,6 +11,19 @@ h1 {
     color: rgb(0, 0, 0);
 }
 
+/*------ span -------*/
+.bold {
+
+    font-weight:bold; 
+}
+
+.normal {
+   font-weight: 400;
+}
+
+.lilbold {
+   font-weight : 500;
+}
 
 /*=========================== LAYOUT ===================== */
 
@@ -213,10 +226,10 @@ h4 {
 
 
     .textBox {
-        width: 100%;
+        width: 98%;
         min-height: 60px;
         padding: 15px;
-        margin: 3px;
+        margin: 10px;
 
         border: solid 1px rgb(56, 56, 56);
     }
@@ -228,17 +241,6 @@ h4 {
     }
 
 
-    .bold {
 
-         font-weight:bold; 
-    }
-
-    .normal {
-        font-weight: 400;
-    }
-
-    .lilbold {
-        font-weight : 500;
-    }
 
    

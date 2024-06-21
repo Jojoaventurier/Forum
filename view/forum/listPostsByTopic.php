@@ -37,4 +37,18 @@
         } ?>
     </div>
 
+    <div class='formBox'>
+
+        <form action="index.php?ctrl=forum&action=addMessage&id=" method="post">
+
+            <h4>Répondre</h4>
+              <p>
+                <label for="addTopicMessage"> Message</label><br>
+                <textarea required type="text" name="topicMessage" rows='10' cols='120'></textarea>
+              </p><br>
+            <input name='submit' type='submit'>
+
+        </form>
+    </div>
+
 </div>

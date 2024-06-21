@@ -111,7 +111,15 @@ class ForumController extends AbstractController implements ControllerInterface{
 
             $category = [ 'categoryName' => $categoryName];
 
-            return $categoryManager->add($category);  
+            $categoryManager->add($category);  
+
+            $this->redirectTo("forum", "index");
         }
     }
+
+    public function addTopic() {
+
+        
+    }
+
 }
