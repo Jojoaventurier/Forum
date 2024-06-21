@@ -149,6 +149,19 @@ class ForumController extends AbstractController implements ControllerInterface{
 
        // $this->redirectTo("forum", 'index');
         }
+    }
+
+    public function addPost($id) {
+
+        $postManager = new PostManager();
+        $id = $_GET['id'];
+        $text = filter_input(INPUT_POST, 'topicPost')
+
+    
+        $newPost = [
+            'text' => 
+        ];
+
 
     }
 }
