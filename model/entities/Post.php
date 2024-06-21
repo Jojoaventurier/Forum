@@ -17,10 +17,6 @@ final class Post extends Entity{
 
 
 
-    
-
-
-
 
     /**
      * Get the value of id
