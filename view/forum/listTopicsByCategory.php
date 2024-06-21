@@ -27,4 +27,24 @@
       <?php } } ?>
   </div>
 
-  </div>
+
+  <div class='formBox'>
+
+        <form action="index.php?ctrl=forum&action=addTopic" method="post">
+
+            <h4>Ajouter un topic</h4>
+              <p>
+                <label for="addTopicTitle"> Titre</label><br>
+                <input required type='text' name='topicTitle'>
+              </p>
+              <br>
+              <p>
+                <label for="addTopicMessage"> Message</label><br>
+                <textarea required type="text" name="topicMessage" rows='10' cols='120'></textarea>
+              </p><br>
+            <input name='submit' type='submit'>
+
+        </form>
+    </div>
+
+</div>
