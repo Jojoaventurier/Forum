@@ -119,17 +119,13 @@ class ForumController extends AbstractController implements ControllerInterface{
         $topicManager = new TopicManager();
         $postManager = new PostManager();
         
-
         $user = 1;
         $id = $_GET['id'];
         
-
         $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $date = date('Y-m-d H:i:s');
-
-        
 
         if (isset($_POST["submit"])) {
 
@@ -140,9 +136,8 @@ class ForumController extends AbstractController implements ControllerInterface{
                 'category_id' => $id,
                 'creationDate' => $date
             ];
-            $topicManager->add($newTopic); 
 
-            $last_id = $topicManager->insert_id(); // (((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))
+            $last_id = $topicManager->add($newTopic);
 
             $newPost = [
                 'text' => $newTopicPost,
