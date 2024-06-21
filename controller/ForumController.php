@@ -61,6 +61,23 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 
+    public function listPostsbyTopic($id) {
+
+        $topicManager = new TopicManager();
+        $postManager = new PostManager();
+        $topic = $topicManager->findOneById($id);
+        $posts = $postManager->findPostsByTopic($id);
+
+        return [
+            "view" => VIEW_DIR."forum/listPostsByTopic.php",
+            "meta_descritpion" => "Messages posés sur le topic : ".$topic,
+            "data" => [
+                "topic" => $topic,
+                "posts" => $posts
+            ]
+        ];
+    }
+
 
     public function listUsers() {
 

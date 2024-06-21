@@ -12,11 +12,12 @@
 
         foreach($topics as $topic ){ //var_dump($topic) ?> 
 
-            <p><a href="#"><?= $topic ?></a> par <?= $topic->getUser() ?> // <a href="#" ><?= $topic->getCategory()?></a></p>
-            <a href="#">
+            
+            <a href="ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
                     <div class="topicCard">
                     <div class="topicTitle">
                         <h4><?=$topic->getTitle()?></h4>
+                        <p> par <?= $topic->getUser() ?> // <?= $topic->getCategory()?></p>
                     </div>  
                     </div>
                 </a>

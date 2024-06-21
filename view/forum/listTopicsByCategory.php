@@ -16,7 +16,7 @@
             <div class="topicCard">
               <div class="topicTitle">
                 <h4><?=$topic->getTitle()?></h4>
-                <p class = "redigepPar">Rédigé par : <?= $topic->getUser() ?></p>
+                <p class = "redigepPar">par <?= $topic->getUser() ?></p>
               </div>  
             </div>
           </a>
