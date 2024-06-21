@@ -100,12 +100,10 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function addCategory() {
 
-        $categoryManager = new CategoryManager;
+        $categoryManager = new CategoryManager();
         var_dump($_POST);
 
         $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        var_dump($categoryName);
 
         if (isset($_POST["submit"]) && strlen($categoryName) != 0) {
 
@@ -119,7 +117,38 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function addTopic() {
 
-        
-    }
+        $topicManager = new TopicManager();
+        $postManager = new PostManager();
 
+        $user = 1;
+        $category = 0;
+
+        $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        $date = $date = date('Y-m-d H:i:s');
+
+        $newTopic = [
+            'title' => $newTopicTitle,
+            'user_id' => $user,
+            'category_id' => $category,
+            'creationDate' => $date
+        ];
+
+        $newPost = [
+            'text' => $newTopicPost,
+            'user_id' => $user,
+            'topic_id' => 20,
+            'creationDate' => $date
+        ];
+
+        if (isset($_POST["submit"])) {
+
+            $topicManager->add($newTopic); 
+            $postManager->add($newPost);
+
+       // $this->redirectTo("forum", 'index');
+        }
+
+    }
 }
