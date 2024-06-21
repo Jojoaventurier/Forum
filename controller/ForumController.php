@@ -16,7 +16,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         // créer une nouvelle instance de CategoryManager
         $categoryManager = new CategoryManager();
         // récupérer la liste de toutes les catégories grâce à la méthode findAll de Manager.php (triés par nom)
-        $categories = $categoryManager->findAll(["categoryName", "DESC"]);
+        $categories = $categoryManager->findAll(["id_category", "ASC"]);
 
         // le controller communique avec la vue "listCategories" (view) pour lui envoyer la liste des catégories (data)
         return [
@@ -32,7 +32,7 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function listTopics() {
 
         $topicManager = new TopicManager();
-;       $topics = $topicManager->findAll(["creationdate", "DESC"]);
+;       $topics = $topicManager->findAll(["creationDate", "DESC"]);
 
         
         return [
@@ -101,7 +101,6 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function addCategory() {
 
         $categoryManager = new CategoryManager();
-        var_dump($_POST);
 
         $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -115,23 +114,24 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 
-    public function addTopic() {
+    public function addTopic($id) {
 
         $topicManager = new TopicManager();
         $postManager = new PostManager();
 
         $user = 1;
-        $category = 0;
+        $id = $_GET['id'];
+        
 
         $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $date = $date = date('Y-m-d H:i:s');
+        $date = date('Y-m-d H:i:s');
 
         $newTopic = [
             'title' => $newTopicTitle,
             'user_id' => $user,
-            'category_id' => $category,
+            'category_id' => $id,
             'creationDate' => $date
         ];
 

@@ -30,7 +30,7 @@
 
   <div class='formBox'>
 
-        <form action="index.php?ctrl=forum&action=addTopic" method="post">
+        <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
 
             <h4>Ajouter un topic</h4>
               <p>
