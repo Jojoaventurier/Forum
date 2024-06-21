@@ -13,7 +13,7 @@
         foreach($topics as $topic ){ //var_dump($topic) ?> 
 
             
-            <a href="ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
+            <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
                     <div class="topicCard">
                     <div class="topicTitle">
                         <h4><?=$topic->getTitle()?></h4>
