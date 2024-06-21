@@ -118,6 +118,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $topicManager = new TopicManager();
         $postManager = new PostManager();
+        
 
         $user = 1;
         $id = $_GET['id'];
@@ -141,7 +142,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             ];
             $topicManager->add($newTopic); 
 
-            $last_id = DAO::LastInsertId();
+            $last_id = $topicManager->insert_id(); // (((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))
 
             $newPost = [
                 'text' => $newTopicPost,
