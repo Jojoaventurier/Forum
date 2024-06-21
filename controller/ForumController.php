@@ -128,26 +128,30 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $date = date('Y-m-d H:i:s');
 
-        $newTopic = [
-            'title' => $newTopicTitle,
-            'user_id' => $user,
-            'category_id' => $id,
-            'creationDate' => $date
-        ];
-
-        $newPost = [
-            'text' => $newTopicPost,
-            'user_id' => $user,
-            'topic_id' => 20,
-            'creationDate' => $date
-        ];
+        
 
         if (isset($_POST["submit"])) {
 
+
+            $newTopic = [
+                'title' => $newTopicTitle,
+                'user_id' => $user,
+                'category_id' => $id,
+                'creationDate' => $date
+            ];
             $topicManager->add($newTopic); 
+
+            $last_id = DAO::LastInsertId();
+
+            $newPost = [
+                'text' => $newTopicPost,
+                'user_id' => $user,
+                'topic_id' => $last_id, 
+                'creationDate' => $date
+            ];
             $postManager->add($newPost);
 
-       // $this->redirectTo("forum", 'index');
+            $this->redirectTo("forum", 'index');
         }
     }
 
@@ -169,5 +173,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
 
         $postManager->add($newPost);
+
+        $this->redirectTo("forum", 'index');
     }
 }
