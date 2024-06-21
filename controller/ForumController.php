@@ -154,14 +154,20 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function addPost($id) {
 
         $postManager = new PostManager();
+
         $id = $_GET['id'];
-        $text = filter_input(INPUT_POST, 'topicPost')
+        $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $date = $date = date('Y-m-d H:i:s');
+        $user = 1;
 
     
         $newPost = [
-            'text' => 
+            'text' => $text,
+            'user_id' => $user,
+            'topic_id' => $id,
+            'creationDate' => $date
         ];
 
-
+        $postManager->add($newPost);
     }
 }

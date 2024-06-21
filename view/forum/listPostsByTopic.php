@@ -39,7 +39,7 @@
 
     <div class='formBox'>
 
-        <form action="index.php?ctrl=forum&action=addMessage&id=" method="post">
+        <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
 
             <h4>Répondre</h4>
               <p>
