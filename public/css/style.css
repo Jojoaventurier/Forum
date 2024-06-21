@@ -196,3 +196,26 @@ h4 {
     .homelinks:hover {
         color: black;
     }
+
+    /*=========================== LIST POSTS BY TOPIC ===================== */
+
+    .postCard {
+        min-height: auto;
+        width : 600px;
+        padding: 10px;
+        margin: 10px 0;
+
+        border: solid 1px black;
+    }
+
+
+    .textBox {
+        height: 80%;
+        width: 100%;
+        padding: 3px;
+        margin: 3px;
+
+        border: solid 1px rgb(56, 56, 56);
+    }
+
+   

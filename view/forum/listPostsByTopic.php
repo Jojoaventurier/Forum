@@ -1,11 +1,12 @@
 <?php
-    $posts = $result["data"]['posts']; 
+    $posts = $result["data"]['posts'];
+    $topic = $result["data"]['topic']; 
 ?>
 
 
 <div class="centered">
 
-    <h1>Liste des topics</h1>
+    <h1><?= $topic  ?></h1>
 
     <div id="postsBoard" class="board">
         <?php 
@@ -16,11 +17,13 @@
             
                     <div class="postCard">
                         <div class="postText">
-
-                            <h4>par <?= $post->getUser() ?></h4>
                             <p><?= $post->getCreationDate()?></p>
+                            <h4>Posté par <?= $post->getUser() ?></h4>
                             
-                            <p> <?= $post->getText() ?></p>
+
+                            <div class='textBox'>
+                                <p> <?= $post->getText() ?><p>
+                            </div>
 
                         </div>  
                     </div>

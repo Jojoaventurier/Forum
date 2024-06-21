@@ -70,7 +70,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         return [
             "view" => VIEW_DIR."forum/listPostsByTopic.php",
-            "meta_descritpion" => "Messages posés sur le topic : ".$topic,
+            "meta_description" => "Messages postés sur le topic : ".$topic,
             "data" => [
                 "topic" => $topic,
                 "posts" => $posts

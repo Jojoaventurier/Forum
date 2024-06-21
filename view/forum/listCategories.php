@@ -11,7 +11,7 @@
         <?php
         foreach($categories as $category ){  ?>
 
-                <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $category->getId() ?>">
+                <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
                     <div class="cardTitle">
                         <h4>
                             <?= $category->getCategoryName() ?>
