@@ -3,7 +3,7 @@
     $topics = $result["data"]['topics']; 
 ?>
 
-<h1>Liste des topics de la catégorie <?= $category->getCategoryName() ?></h1>
+<h1>Liste des topics de la catégorie<br> <span><?= $category->getCategoryName() ?></span></h1>
 
 
 <div class="centered">
@@ -16,6 +16,7 @@
             <div class="topicCard">
               <div class="topicTitle">
                 <h4><?=$topic->getTitle()?></h4>
+                <p class = "redigepPar">Rédigé par : <?= $topic->getUser() ?></p>
               </div>  
             </div>
           </a>

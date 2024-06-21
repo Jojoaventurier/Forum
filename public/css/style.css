@@ -181,8 +181,18 @@ h4 {
 .topicCard {
     width: 100%;
     height: 120px;
-    margin: 20px 0;
+    margin: 20px;
+    padding : 10px;
 
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+
+    .homelinks {
+        text-decoration: none;
+        color: white
+    }
+
+    .homelinks:hover {
+        color: black;
     }
