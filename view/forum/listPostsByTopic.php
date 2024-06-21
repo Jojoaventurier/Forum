@@ -12,7 +12,7 @@
         <?php 
 
         if (is_null($posts) == true ) {
-            echo "Il n'y a pas encore de messages dans ce topic..";
+            echo "Il n'y a pas encore de messages dans ce topic...";
         } else {
 
                 foreach($posts as $post ){  ?>

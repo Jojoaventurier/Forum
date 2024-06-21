@@ -180,7 +180,7 @@ h4 {
 
 .topicCard {
     width: 100%;
-    height: 120px;
+    height: 160px;
     margin: 20px;
     padding : 10px;
 
@@ -200,8 +200,8 @@ h4 {
     /*=========================== LIST POSTS BY TOPIC ===================== */
 
     .postCard {
-        min-height: auto;
-        width : 600px;
+        max-height: fit-content;
+        width : 100%;
         padding: 10px;
         margin: 10px 0;
 
@@ -210,9 +210,8 @@ h4 {
 
 
     .textBox {
-        height: 80%;
         width: 100%;
-        padding: 3px;
+        padding: 15px;
         margin: 3px;
 
         border: solid 1px rgb(56, 56, 56);

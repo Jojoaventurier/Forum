@@ -48,6 +48,8 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $topicManager = new TopicManager();
         $categoryManager = new CategoryManager();
+        $postManager = new PostManager();
+        
         $category = $categoryManager->findOneById($id);
         $topics = $topicManager->findTopicsByCategory($id);
 
