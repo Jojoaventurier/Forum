@@ -98,20 +98,20 @@ class ForumController extends AbstractController implements ControllerInterface{
 
 
 
-
-
     public function addCategory() {
 
         $categoryManager = new CategoryManager;
         var_dump($_POST);
 
-        if (isset($_POST["submit"])) {
+        $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        var_dump($categoryName);
 
+        if (isset($_POST["submit"]) && strlen($categoryName) != 0) {
 
-            return $categoryManager->add($category);
+            $category = [ 'categoryName' => $categoryName];
+
+            return $categoryManager->add($category);  
         }
-
     }
 }

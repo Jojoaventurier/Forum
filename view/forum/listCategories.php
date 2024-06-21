@@ -26,7 +26,7 @@
         <form action="index.php?ctrl=forum&action=addCategory" method="post">
 
             <label for="addCategory"> Ajouter une catégorie</label>
-            <input type="text" name="category">
+            <input type="text" name="categoryName">
             <input name='submit' type='submit'>
 
         </form>
