@@ -25,6 +25,15 @@
         <?php 
         } ?>
     </div>
+    <div class='formBox'>
+        <form action="" method="post">
+            <label for="addCategory"> Ajouter une catégorie</label>
+            <input type="text" name="category">
+            <input name='submit' type='submit'>
+
+
+        </form>
+    </div>
 
 
 </div>
