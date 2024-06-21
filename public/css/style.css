@@ -46,7 +46,6 @@ nav {
 
 #nav-left {
     display: flex;
-
 }
 
 #nav-right {
@@ -154,7 +153,6 @@ h4 {
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     /* box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px; */
-
 }
 
 
@@ -211,10 +209,31 @@ h4 {
 
     .textBox {
         width: 100%;
+        min-height: 60px;
         padding: 15px;
         margin: 3px;
 
         border: solid 1px rgb(56, 56, 56);
+    }
+
+    .titleBox {
+
+        border: solid 1px black;
+        padding: 10px;
+    }
+
+
+    .bold {
+
+         font-weight:bold; 
+    }
+
+    .normal {
+        font-weight: 400;
+    }
+
+    .lilbold {
+        font-weight : 500;
     }
 
    

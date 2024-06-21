@@ -6,7 +6,10 @@
 
 <div class="centered">
 
-    <h1><?= $topic  ?></h1>
+    <div class='titleBox'>
+        <p>Topic</p>
+        <h1><?= $topic  ?></h1>
+    </div>
 
     <div id="postsBoard" class="board">
         <?php 
@@ -20,7 +23,7 @@
                             <div class="postCard">
                                 <div class="postText">
                                     <p><?= $post->getCreationDate()?></p>
-                                    <h4>Posté par <?= $post->getUser() ?></h4>
+                                    <h4><span class='normal'>Posté par</span> <?= $post->getUser() ?></h4>
                                     
 
                                     <div class='textBox'>
