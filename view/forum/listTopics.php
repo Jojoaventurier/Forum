@@ -17,7 +17,7 @@
                     <div class="topicCard">
                         <div class="topicTitle">
                             <h4><?=$topic->getTitle()?></h4>
-                            <p>créé par <?= $topic->getUser() ?>, le <?= $topic->getCreationDate(); // <?= $topic->getCategory()?></p>
+                            <p>créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); // <?= $topic->getCategory()?></p>
                             <p> Dernier message le : _______ par ________</p>
                             <p>APERCU DU DERNIER MESSAGE</p>
                         </div>  
