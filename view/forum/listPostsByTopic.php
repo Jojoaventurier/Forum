@@ -9,6 +9,8 @@
     <div class='titleBox'>
         <p>Topic</p>
         <h1><?= $topic  ?></h1>
+        <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
+        <a href="index.php?ctrl=forum&action=delete&id=<?= $topic->getId() ?>">Supprimer le topic</a>
     </div>
 
     <div id="postsBoard" class="board">
@@ -29,7 +31,7 @@
                                     <div class='textBox'>
                                         <p> <?= $post->getText() ?><p>
                                     </div>
-
+                                <a href="index.php?ctrl=forum&action=delete&id=<?= $post->getId() ?>">Supprimer le post</a>
                                 </div>  
                             </div>
                         </a>
