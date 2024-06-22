@@ -197,4 +197,12 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
 
+    public function editPost($id) {
+
+        $postManager = new PostManager();
+
+        
+    }
+
+
 }
