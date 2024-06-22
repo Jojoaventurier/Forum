@@ -172,4 +172,29 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $this->redirectTo("forum", 'index');
     }
+
+
+    public function deletePost($id) {
+
+        $postManager = new PostManager();
+
+        $id = $_GET['id'];
+
+        $postManager->delete($id);
+
+        $this->redirectTo("forum", 'index');
+    }
+
+    public function deleteTopic($id) {
+
+        $topicManager = new TopicManager();
+
+        $id = $_GET['id'];
+
+        $topicManager->delete($id);
+
+        $this->redirectTo("forum", 'index');
+    }
+
+
 }
