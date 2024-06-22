@@ -202,6 +202,18 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager = new PostManager();
         $id = $_GET['id'];
 
+        $topic = $topicManager->findOneById($id);
+        $post = $postManager->findOneById($id);
+
+        return [
+            "view" => VIEW_DIR."forum/listPostsByTopic.php",
+            "meta_description" => "Messages postés sur le topic : ".$topic,
+            "data" => [
+                "topic" => $topic,
+                "posts" => $posts
+            ]
+        ];
+
     }
 
     public function editPost($id) {

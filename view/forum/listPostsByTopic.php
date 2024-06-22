@@ -32,6 +32,7 @@
                                         <p> <?= $post->getText() ?><p>
                                     </div>
                                 <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
+                                <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
                                 </div>  
                             </div>
                         </a>
