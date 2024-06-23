@@ -1,14 +1,12 @@
 <?php     
-    $posts = $result["data"]['posts'];
-    $topic = $result["data"]['topic']; 
-?>
+    $post = $result["data"]['post']; ?>
 
 
 
 <div class='centered'>
     <div class='formBox'>
 
-            <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
+            <form action="index.php?ctrl=forum&action=editPost&id=<?= $post->getId() ?>" method="post">
 
                 <h4>Modifier mon post</h4>
                 <p>

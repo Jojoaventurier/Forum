@@ -199,18 +199,19 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function displayPostEdit($id) {
 
+        $topicManager = new TopicManager();
         $postManager = new PostManager();
         $id = $_GET['id'];
 
-        $topic = $topicManager->findOneById($id);
+        $topic = $topicManager->findTopicId($id);
         $post = $postManager->findOneById($id);
 
         return [
-            "view" => VIEW_DIR."forum/listPostsByTopic.php",
-            "meta_description" => "Messages postés sur le topic : ".$topic,
+            "view" => VIEW_DIR."forum/editPost.php",
+            "meta_description" => "Modifier le message : ".$topic,
             "data" => [
                 "topic" => $topic,
-                "posts" => $posts
+                "post" => $post
             ]
         ];
 

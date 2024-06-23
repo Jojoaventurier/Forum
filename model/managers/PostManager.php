@@ -16,7 +16,7 @@ class PostManager extends Manager{
     }
 
 
-    
+
     public function findPostsByTopic($id) {
 
         $sql = "SELECT * 
@@ -30,5 +30,17 @@ class PostManager extends Manager{
             $this->className
         );
     }
+
+    public function findTopicId($id) {
+
+        $sql = "SELECT topic_id
+                FROM ".$this->tableName." t 
+                WHERE t.id_post = :id";
+
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+}
 
 }
