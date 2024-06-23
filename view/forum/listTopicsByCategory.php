@@ -1,6 +1,7 @@
 <?php
   $category = $result["data"]['category']; 
-    $topics = $result["data"]['topics']; 
+  $topics = $result["data"]['topics'];
+  $posts = $result["data"]['posts']   
 ?>
 
 <h1><?= $category->getCategoryName() ?></h1>
