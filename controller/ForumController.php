@@ -199,18 +199,14 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     public function displayPostEdit($id) {
 
-        $topicManager = new TopicManager();
         $postManager = new PostManager();
         $id = $_GET['id'];
-
-        $topic = $topicManager->findTopicId($id);
         $post = $postManager->findOneById($id);
 
         return [
             "view" => VIEW_DIR."forum/editPost.php",
-            "meta_description" => "Modifier le message : ".$topic,
+            "meta_description" => "Modifier le message : ",
             "data" => [
-                "topic" => $topic,
                 "post" => $post
             ]
         ];
@@ -224,18 +220,10 @@ class ForumController extends AbstractController implements ControllerInterface{
         $id = $_GET['id'];
 
         $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $date = $date = date('Y-m-d H:i:s');
-        $user = 1;
 
-    
-        $newPost = [
-            'text' => $text,
-            'user_id' => $user,
-            'topic_id' => $id,
-        ];
+        $postManager->update($id, $text);
 
-        $postManager->add($newPost);
-
+        $this->redirectTo("forum", 'index');
 
     }
 

@@ -35,12 +35,24 @@ class PostManager extends Manager{
 
         $sql = "SELECT topic_id
                 FROM ".$this->tableName." t 
-                WHERE t.id_post = :id";
+                WHERE t.id_message = :id";
 
         return  $this->getOneOrNullResult(
             DAO::select($sql, ['id' => $id]), 
             $this->className
         );
-}
+    }   
+
+    public function update($id, $text) {
+        
+        $sql = "UPDATE message
+                SET text = :text
+                WHERE id_message = :id";
+
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ['id' => $id, 'text' => $text]), 
+            $this->className
+        );
+    }
 
 }
