@@ -10,7 +10,7 @@
         <?php 
 
         foreach($topics as $topic ){ ?> 
-  
+            <!-- Affiche l'intégralité des topics enregistrés sur le forum (du plus récent au plus vieux) -->
             <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
                 <div class="topicCard">
                     <h4 class='black'><?=$topic->getTitle()?></h4>

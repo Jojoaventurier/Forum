@@ -7,7 +7,7 @@
 
 
 <div class="centered">
-
+<!-- Affiche tous les topics créés pour la catégorie donnée -->
   <div id="topicBoard" class="board">
     <?php 
        if (is_null($topics) == true ) {
@@ -26,9 +26,8 @@
       <?php } } ?>
   </div>
 
-
+<!-- Formulaire pour ajouter un sujet sur le forum (il sera ajouté à la catégorie sur laquelle on est) -->
   <div class='formBox'>
-
         <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
 
             <h4 class='black'>Ajouter un topic</h4>

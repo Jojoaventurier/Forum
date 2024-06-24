@@ -8,16 +8,17 @@ use Model\Managers\TopicManager;
 
 class HomeController extends AbstractController implements ControllerInterface {
 
+    // fonction index appelée par défaut si le controlleur ne trouve pas d'action existante, renvoie à la page d'accueil
     public function index(){
 
-        $topicManager = new TopicManager();
-        $topics = $topicManager->findAll(["creationDate", "DESC"]);
+        $topicManager = new TopicManager(); // création d'une instance TopicManager
+        $topics = $topicManager->findAll(["creationDate", "DESC"]); // récupération de tous les sujets, ordonnés par date de création du plus récent au plus vieux
 
         return [
-            "view" => VIEW_DIR."home.php",
-            "meta_description" => "Page d'accueil du forum",
+            "view" => VIEW_DIR."home.php",  // récupération de la vue 'home'
+            "meta_description" => "Page d'accueil du forum", // meta description de la page renvoyée
             "data" => [
-                "topics" => $topics
+                "topics" => $topics // envoi des sujets récupérés via le tableau data qui sera récupéré et utilisé sur la page home.php
             ]
         ];
     }

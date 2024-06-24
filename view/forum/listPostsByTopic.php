@@ -11,7 +11,7 @@
         <h1><?= $topic  ?></h1>
         <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
         <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
-    </div>
+    </div> <!-- Boutons pour verrouiller / supprimer le topic -->
 
     <div id="postsBoard" class="board">
         <?php 
@@ -21,7 +21,7 @@
         } else {
 
                 foreach($posts as $post ){  ?>
-
+                            <!-- Affiche tous les posts du topic -->
                             <div class="postCard">
                                 <div class="postText">
                                     <p class="uk-comment"><?= $post->getCreationDate()?></p>
@@ -32,24 +32,23 @@
                                     </div>
                                 <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
                                 <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
-                                </div>  
+                                </div>  <!-- Boutons pour modifier/supprimer le post -->
                             </div>
                         </a>
                 <?php } 
         } ?>
     </div>
 
+
+    <!--Formulaire pour ajouter un post au topic -->
     <div class='formBox'>
-
         <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
-
             <p class="uk-text-emphasis">Répondre</p>
               <p class="uk-comment">
                 <label for="topicPost"> Message</label><br>
                 <textarea required type="text" name="topicPost" rows='10' cols='120'></textarea>
               </p><br>
             <input name='submit' type='submit'>
-
         </form>
     </div>
 

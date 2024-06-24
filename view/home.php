@@ -6,7 +6,7 @@
 
     <h1>BIENVENUE SUR LE FORUM</h1>
 
-<div class='centered home flex'>
+<div id="homelinksContainer" class="centered home flex">
         <div class='paragraph'>
             <p class="justified">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ut nemo quia voluptas numquam, itaque ipsa soluta ratione eum temporibus aliquid, facere rerum in laborum debitis labore aliquam ullam cumque.</p>
         </div>
@@ -34,7 +34,7 @@
     <h3 class='no-margin'>Derniers topics ajoutés</h3>
 
     <div id="topicBoard" class="board">
-        <?php 
+        <?php  // affichage des derniers topics enregistrés sur le forum (affichage du plus récent au plus vieux)
 
         foreach($topics as $topic ){ ?> 
 

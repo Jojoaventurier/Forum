@@ -16,7 +16,7 @@ class PostManager extends Manager{
     }
 
 
-
+    // récupérer tous les posts d'un topic (avec l'id du topic)
     public function findPostsByTopic($id) {
 
         $sql = "SELECT * 
@@ -31,32 +31,7 @@ class PostManager extends Manager{
         );
     }
 
-    public function getLastPostByTopic($id) {
-        $sql = "SELECT * 
-        FROM ".$this->tableName." t 
-        WHERE t.topic_id = :id
-        ORDER BY creationDate DESC
-        LIMIT 1";
-
-        // la requête renvoie plusieurs enregistrements --> getMultipleResults
-        return  $this->getMultipleResults(
-            DAO::select($sql, ['id' => $id]), 
-            $this->className
-);
-    }
-
-    public function findTopicId($id) {
-
-        $sql = "SELECT topic_id
-                FROM ".$this->tableName." t 
-                WHERE t.id_message = :id";
-
-        return  $this->getOneOrNullResult(
-            DAO::select($sql, ['id' => $id]), 
-            $this->className
-        );
-    }   
-
+    // modifie le contenu (colonne 'text' de la BDD) du message dans la BDD
     public function update($id, $text) {
         
         $sql = "UPDATE message

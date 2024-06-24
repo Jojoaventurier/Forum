@@ -51,6 +51,7 @@ nav {
     display: flex;
     justify-content: center;
     width: 100%;
+    
 }
 
 .marginLeft {
@@ -157,9 +158,6 @@ h1 {
     padding: 10px;
 }
 
-.home {
-    margin: 25px 0;
-}
 
 
 /*--------- Footer ---------*/
@@ -173,14 +171,24 @@ footer {
 
 /*=========================== HOMEPAGE ===================== */
 
+
+.home {
+    margin: 25px 0;
+}
+
 .linksContainer {
     width: 100%;
     display : flex;
     justify-content: center;
 }
 
+#homelinksContainer a{
+    text-decoration: none;
+}
+
 .no-margin {
     margin: 0;
+    padding-left: 28px;
 }
 
 .flex {
@@ -195,9 +203,6 @@ footer {
 }
 
 /*=========================== LIST CATEGORIES ===================== */
-
-
-
 
 
 .cardTitle {
