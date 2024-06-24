@@ -11,9 +11,9 @@
         <?php
             foreach($categories as $category ){  ?>
 
-                    <a class ='homelinks' href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                    <a class ='homeLinks' href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
                         <div class="cardTitle">
-                            <h4 class="uk-comment">
+                            <h4>
                                 <?= $category->getCategoryName() ?>
                             </h4>
                         </div>

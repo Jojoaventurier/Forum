@@ -8,7 +8,7 @@
 }
 
 h1 {
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
 }
 
 /*------ span -------*/
@@ -140,6 +140,7 @@ footer {
 
     background-color: rgb(46, 46, 46);
     border-radius: 7px;
+    color: white;
 }
 
 #categoryBoard {
@@ -148,10 +149,6 @@ footer {
 }
 
 #categoryBoard a {
-    text-decoration: none;
-}
-
-.cardTitle {
     text-decoration: none;
     color: white;
 }

@@ -14,7 +14,7 @@
         echo "Il n'y a pas encore de topic créé dans cette catégorie...";
     } else {
       foreach($topics as $topic ){ ?> 
-            <a class="homeLinks" href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
+            <a  href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
               <div class="topicCard">
                   <div class="topicTitle">
                       <h4><?=$topic->getTitle()?></h4>
