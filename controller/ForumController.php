@@ -104,14 +104,14 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
 
-
+    // permet d'ajouter une catégorie à la BDD
     public function addCategory() {
-
+       
         $categoryManager = new CategoryManager();
 
-        $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise les valeurs de champs entrées par l'utilisateur
 
-        if (isset($_POST["submit"]) && strlen($categoryName) != 0) {
+        if (isset($_POST["submit"]) && strlen($categoryName) != 0) { // vérifie que l'utilisateur a entré quelque chose
 
             $category = [ 'categoryName' => $categoryName];
 
@@ -121,6 +121,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         }
     }
 
+    // permet d'ajouter un topic à une catégorie, avec création d'un premier post obligatoire
     public function addTopic($id) {
 
         $topicManager = new TopicManager();
@@ -129,14 +130,14 @@ class ForumController extends AbstractController implements ControllerInterface{
         $user = 1;
         $id = $_GET['id'];
         
-        $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);  // récupère et sanitise le titre entré par l'utilisateur
+        $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
 
-        $date = date('Y-m-d H:i:s');
+        $date = date('Y-m-d H:i:s'); // récupère la date de création du topic
         var_dump($_POST);
         if (isset($_POST["submit"])) {
 
-
+            // stockage des informations du topic dans un objet newTopic
             $newTopic = [
                 'title' => $newTopicTitle,
                 'user_id' => $user,
@@ -144,30 +145,32 @@ class ForumController extends AbstractController implements ControllerInterface{
                 'creationDate' => $date
             ];
 
-            $last_id = $topicManager->add($newTopic);
+            $last_id = $topicManager->add($newTopic); // fonction add retourne automatiquement le lastInsertedId() en même temps qu'elle effectue l'inserstion dans la BDD (voir Manager)
 
+            // stockage des informations du post dans un objet newPost
             $newPost = [
                 'text' => $newTopicPost,
                 'user_id' => $user,
                 'topic_id' => $last_id, 
                 'creationDate' => $date
             ];
-            $postManager->add($newPost);
+            $postManager->add($newPost); // insertion du nouveau post à la BDD
 
             $this->redirectTo("forum", 'index');
         }
     }
 
+    // ajout d'un post à un topic (post lié au topic par l'id du topic)
     public function addPost($id) {
 
         $postManager = new PostManager();
 
-        $id = $_GET['id'];
-        $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $date = $date = date('Y-m-d H:i:s');
+        $id = $_GET['id']; // récupération de l'id du topic où on ajoute un message
+        $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
+        $date = $date = date('Y-m-d H:i:s'); // récupère la date de création du post
         $user = 1;
 
-    
+        // stockage des informations dans un objet Post
         $newPost = [
             'text' => $text,
             'user_id' => $user,
@@ -175,12 +178,12 @@ class ForumController extends AbstractController implements ControllerInterface{
             'creationDate' => $date
         ];
 
-        $postManager->add($newPost);
+        $postManager->add($newPost); // ajout de l'objet post créé à la BDD
 
         $this->redirectTo("forum", 'index');
     }
 
-
+    // fonction de suppression d'un post (se base sur l'id du post)
     public function deletePost($id) {
 
         $postManager = new PostManager();
@@ -192,6 +195,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $this->redirectTo("forum", 'index');
     }
 
+    // fonction de suppression d'un topic (se base sur l'id du topic)
     public function deleteTopic($id) {
 
         $topicManager = new TopicManager();
@@ -203,7 +207,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $this->redirectTo("forum", 'index');
     }
 
-
+    //fonction qui affiche le formulaire de modification d'un post
     public function displayPostEdit($id) {
 
         $postManager = new PostManager();
@@ -220,6 +224,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
     }
 
+    // fonction qui modifie le poste et insère le nouveau champs 'text' à la BDD (le post garde son id)
     public function editPost($id) {
 
         $postManager = new PostManager();
