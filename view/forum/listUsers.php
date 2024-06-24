@@ -10,6 +10,6 @@ $users = $result["data"]['users'];
 
 foreach($users as $user) { ?>
 
-    <p><a href="#"><?= $user ?></a></p>
+    <p class="uk-comment"><a href="#"><?= $user ?></a></p>
 
 <?php }

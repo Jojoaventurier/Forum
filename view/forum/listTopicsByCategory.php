@@ -18,7 +18,7 @@
                       <div class="topicCard">
                           <div class="topicTitle">
                               <h4><?=$topic->getTitle()?></h4>
-                              <p>créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); ?></p>
+                              <p class="uk-comment">créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); ?></p>
                           </div>  
                       </div>
             </a>
@@ -32,12 +32,12 @@
         <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
 
             <h4>Ajouter un topic</h4>
-              <p>
+              <p class="uk-comment">
                 <label for="newTopicTitle"> Titre</label><br>
                 <input required type='text' name='newTopicTitle'>
               </p>
               <br>
-              <p>
+              <p class="uk-comment">
                 <label for="newTopicMessage"> Message</label><br>
                 <textarea required type="text" name="newTopicMessage" rows='10' cols='120'></textarea>
               </p><br>

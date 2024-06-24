@@ -17,7 +17,7 @@
                     <div class="topicCard">
                         <div class="topicTitle">
                             <h4><?=$topic->getTitle()?></h4>
-                            <p>créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); // <?= $topic->getCategory()?></p>
+                            <p class="uk-comment">créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); // <?= $topic->getCategory()?></p>
                         </div>  
                     </div>
                 </a>
