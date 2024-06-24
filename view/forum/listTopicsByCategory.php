@@ -1,7 +1,6 @@
 <?php
   $category = $result["data"]['category']; 
   $topics = $result["data"]['topics'];
-  $posts = $result["data"]['posts']   
 ?>
 
 <h1><?= $category->getCategoryName() ?></h1>
@@ -20,7 +19,6 @@
                           <div class="topicTitle">
                               <h4><?=$topic->getTitle()?></h4>
                               <p>créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); ?></p>
-                              <p> Dernier message le : _______ par ________</p>
                           </div>  
                       </div>
             </a>

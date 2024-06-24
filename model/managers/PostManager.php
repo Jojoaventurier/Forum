@@ -31,6 +31,20 @@ class PostManager extends Manager{
         );
     }
 
+    public function getLastPostByTopic($id) {
+        $sql = "SELECT * 
+        FROM ".$this->tableName." t 
+        WHERE t.topic_id = :id
+        ORDER BY creationDate DESC
+        LIMIT 1";
+
+        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+        return  $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id]), 
+            $this->className
+);
+    }
+
     public function findTopicId($id) {
 
         $sql = "SELECT topic_id

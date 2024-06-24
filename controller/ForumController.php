@@ -24,7 +24,6 @@ class ForumController extends AbstractController implements ControllerInterface{
             "meta_description" => "Liste des catégories du forum",
             "data" => [
                 "categories" => $categories,
-            
             ]
         ];
     }
@@ -48,7 +47,6 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $topicManager = new TopicManager();
         $categoryManager = new CategoryManager();
-        $postManager = new PostManager();
         
         $category = $categoryManager->findOneById($id);
         $topics = $topicManager->findTopicsByCategory($id);
@@ -58,7 +56,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             "meta_description" => "Liste des topics par catégorie : ".$category,
             "data" => [
                 "category" => $category,
-                "topics" => $topics
+                "topics" => $topics,
             ]
         ];
     }
