@@ -150,6 +150,16 @@ h1 {
     height: 100%;
 }
 
+.centered {
+    min-width: 960px;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+.home {
+    margin: 25px 0;
+}
 
 
 /*--------- Footer ---------*/
@@ -166,21 +176,28 @@ footer {
 .linksContainer {
     width: 100%;
     display : flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
+.no-margin {
+    margin: 0;
+}
 
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.paragraph {
+    width: 600px;
+    text-align: justify;
+}
 
 /*=========================== LIST CATEGORIES ===================== */
 
 
-.centered {
-    min-width: 960px;
-    height: 100%;
-    margin: auto;
-    padding: 0 10px;
-}
+
 
 
 .cardTitle {
@@ -191,6 +208,7 @@ footer {
 
     height: 60px;
     width: 250px;
+    margin: 0 10px;
 
     background-color: rgb(46, 46, 46);
     border-radius: 7px;

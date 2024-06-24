@@ -6,9 +6,10 @@
 
     <h1>BIENVENUE SUR LE FORUM</h1>
 
-<div class='centered'>
-        <p class="justified">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ut nemo quia voluptas numquam, itaque ipsa soluta ratione eum temporibus aliquid, facere rerum in laborum debitis labore aliquam ullam cumque.</p>
-
+<div class='centered home flex'>
+        <div class='paragraph'>
+            <p class="justified">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ut nemo quia voluptas numquam, itaque ipsa soluta ratione eum temporibus aliquid, facere rerum in laborum debitis labore aliquam ullam cumque.</p>
+        </div>
         <div class='linksContainer'>
             <a class ='homelinks' href="index.php?ctrl=forum&action=listTopicsByCategories">
                 <div class='cardTitle'>
@@ -30,7 +31,7 @@
 
 <div class="centered">
 
-    <h3>Derniers topics ajoutés</h3>
+    <h3 class='no-margin'>Derniers topics ajoutés</h3>
 
     <div id="topicBoard" class="board">
         <?php 
