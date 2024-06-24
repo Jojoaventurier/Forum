@@ -50,12 +50,20 @@ h1 {
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    
+    background-color: rgba(156, 156, 156, 0.123);
+    padding: 10px;
+    margin-bottom: 30px;
 }
 
 .marginLeft {
     margin-left: 20px;
+}
+
+ul.navigation {
+    padding : 0;
+    margin: 0;
 }
 
 .navigation {
@@ -74,7 +82,7 @@ nav {
     display: inline-block;
     list-style: outside none none;
     margin: 0.5em 1.5em;
-    padding: 0;
+    padding: 0 30px;
   }
   .navigation a {
     padding: 0.3em 0;
@@ -112,13 +120,7 @@ nav {
     width: 100%;
   }
 
-#nav-left {
-    display: flex;
-}
 
-#nav-right {
-    display: flex;
-}
 
 .nav-link {
     padding: 10px 10px;
@@ -152,22 +154,30 @@ h1 {
 }
 
 .centered {
-    min-width: 960px;
+    min-width: 980px;
     height: 100%;
     margin: auto;
     padding: 10px;
 }
 
-
+.blocked {
+    width: 80%;
+}
 
 /*--------- Footer ---------*/
 
 footer {
     display: flex;
     height: 3rem;
+    justify-content: center;
     align-items: center;
+    background-color: rgba(156, 156, 156, 0.123);
+    width: 100%;
 }
 
+footer p {
+    margin: 0;
+}
 
 /*=========================== HOMEPAGE ===================== */
 

@@ -14,43 +14,40 @@
     <body>
         <div id="wrapper"> 
             <div id="mainpage">
-                <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
-                <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
-                <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
                 <header>
-                    <div class='centered'>
                         <nav>
-                            <div id="nav-left">
+                            <div id="nav">
                                 <ul class='navigation'>
                                     <li><a class="nav-link marginLeft" href="/"></i>Accueil</a></li>
-                                </ul>
-                                <?php // si l'admin est connecté
-                                if(App\Session::isAdmin()){
-                                    ?>
-                                    <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                                <?php } ?>
-                            </div>
-                            <div id="nav-right">
-                            <?php
-                                // si l'utilisateur est connecté 
-                                if(App\Session::getUser()){
-                                    ?> <ul class="navigation">
-                                            <li><a class="nav-link" href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a></li>
-                                            <li><a class="nav-link" href="index.php?ctrl=security&action=logout">Déconnexion</a></li>
-                                        </ul>
+                                
+                                    <?php // si l'admin est connecté
+                                    if(App\Session::isAdmin()){
+                                        ?>
+                                        <li><a href="index.php?ctrl=home&action=users">Voir la liste des gens</a></li>
+                                        <?php } 
+
+                                    // si l'utilisateur est connecté 
+                                    if(App\Session::getUser()){
+                                        ?> 
+                                        <li><a class="nav-link" href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a></li>
+                                        <li><a class="nav-link" href="index.php?ctrl=security&action=logout">Déconnexion</a></li>
+                                            
+                                            <?php
+                                    }
+                                    else{
+                                        ?>
+                                            <li><a class="nav-link" href="index.php?ctrl=security&action=login">Connexion</a></li>
+                                            <li><a class="nav-link" href="index.php?ctrl=security&action=register">Inscription</a></li>
+                                    </ul>
                                     <?php
                                 }
-                                else{
-                                    ?><ul class='navigation'>
-                                        <li><a class="nav-link" href="index.php?ctrl=security&action=login">Connexion</a></li>
-                                        <li><a class="nav-link" href="index.php?ctrl=security&action=register">Inscription</a></li>
-                                    </ul>
-                                <?php
-                                }
-                            ?>
+                                ?>
                             </div>
+                            <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
+                            <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
+                            <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
                         </nav>
-                    </div>
+                   
                 </header>
                 
                 <main id="forum">

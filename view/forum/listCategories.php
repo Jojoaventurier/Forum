@@ -3,7 +3,7 @@
 ?>
 
 
-<div class="centered">
+<div class="centered blocked">
 
     <h1>Liste des catégories</h1>
 
