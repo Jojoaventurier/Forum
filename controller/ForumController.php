@@ -124,7 +124,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $date = date('Y-m-d H:i:s');
-
+        var_dump($_POST);
         if (isset($_POST["submit"])) {
 
 
