@@ -11,13 +11,11 @@
         <?php
             foreach($categories as $category ){  ?>
 
-                    <a class ='homeLinks' href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
-                        <div class="cardTitle">
-                            <h4>
-                                <?= $category->getCategoryName() ?>
-                            </h4>
-                        </div>
-                    </a>
+                <a class ='homeLinks' href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                    <div class="cardTitle">
+                        <?= $category->getCategoryName() ?>
+                    </div>
+                </a>
         <?php } ?>
     </div>
 

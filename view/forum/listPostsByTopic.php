@@ -25,11 +25,10 @@
                             <div class="postCard">
                                 <div class="postText">
                                     <p class="uk-comment"><?= $post->getCreationDate()?></p>
-                                    <h4><p class="uk-comment" >Posté par <?= $post->getUser() ?></p></h4>
-                                    
+                                    <p class="uk-comment" >Posté par <span class="uk-text-emphasis"><?= $post->getUser() ?></span></p>
 
                                     <div class='textBox'>
-                                        <p class="uk-comment"> <?= $post->getText() ?><p>
+                                        <p class="uk-text-emphasis"> <?= $post->getText() ?><p>
                                     </div>
                                 <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
                                 <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
@@ -44,7 +43,7 @@
 
         <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
 
-            <h4>Répondre</h4>
+            <p class="uk-text-emphasis">Répondre</p>
               <p class="uk-comment">
                 <label for="topicPost"> Message</label><br>
                 <textarea required type="text" name="topicPost" rows='10' cols='120'></textarea>

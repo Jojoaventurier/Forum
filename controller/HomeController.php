@@ -4,13 +4,21 @@ namespace Controller;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
+use Model\Managers\TopicManager;
 
 class HomeController extends AbstractController implements ControllerInterface {
 
     public function index(){
+
+        $topicManager = new TopicManager();
+        $topics = $topicManager->findAll(["creationDate", "DESC"]);
+
         return [
             "view" => VIEW_DIR."home.php",
-            "meta_description" => "Page d'accueil du forum"
+            "meta_description" => "Page d'accueil du forum",
+            "data" => [
+                "topics" => $topics
+            ]
         ];
     }
         

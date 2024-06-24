@@ -17,7 +17,7 @@
             <a  href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
               <div class="topicCard">
                   <div class="topicTitle">
-                      <h4><?=$topic->getTitle()?></h4>
+                      <h4 class='black'><?=$topic->getTitle()?></h4>
                       <p class="uk-comment">créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); ?></p>
                   </div>  
               </div>
@@ -31,7 +31,7 @@
 
         <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
 
-            <h4>Ajouter un topic</h4>
+            <h4 class='black'>Ajouter un topic</h4>
               <p class="uk-comment">
                 <label for="newTopicTitle"> Titre</label><br>
                 <input required type='text' name='newTopicTitle'>
