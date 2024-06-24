@@ -107,6 +107,14 @@ footer {
 }
 
 
+/*=========================== HOMEPAGE ===================== */
+
+.linksContainer {
+    width: 100%;
+    display : flex;
+    justify-content: space-around;
+}
+
 
 
 /*=========================== LIST CATEGORIES ===================== */
