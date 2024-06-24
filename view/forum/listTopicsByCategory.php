@@ -14,13 +14,13 @@
         echo "Il n'y a pas encore de topic créé dans cette catégorie...";
     } else {
       foreach($topics as $topic ){ ?> 
-            <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
-                      <div class="topicCard">
-                          <div class="topicTitle">
-                              <h4><?=$topic->getTitle()?></h4>
-                              <p class="uk-comment">créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); ?></p>
-                          </div>  
-                      </div>
+            <a class="homeLinks" href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
+              <div class="topicCard">
+                  <div class="topicTitle">
+                      <h4><?=$topic->getTitle()?></h4>
+                      <p class="uk-comment">créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); ?></p>
+                  </div>  
+              </div>
             </a>
           
       <?php } } ?>
@@ -37,7 +37,7 @@
                 <input required type='text' name='newTopicTitle'>
               </p>
               <br>
-              <p class="uk-comment">
+              <p class="uk-text-default">
                 <label for="newTopicMessage"> Message</label><br>
                 <textarea required type="text" name="newTopicMessage" rows='10' cols='120'></textarea>
               </p><br>

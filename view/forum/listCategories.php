@@ -11,9 +11,9 @@
         <?php
             foreach($categories as $category ){  ?>
 
-                    <a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
+                    <a class ='homelinks' href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>">
                         <div class="cardTitle">
-                            <h4>
+                            <h4 class="uk-comment">
                                 <?= $category->getCategoryName() ?>
                             </h4>
                         </div>
@@ -25,7 +25,7 @@
 
         <form action="index.php?ctrl=forum&action=addCategory" method="post">
 
-            <label for="addCategory"> Ajouter une catégorie</label>
+            <label for="addCategory">Ajouter une catégorie</label>
             <input required type="text" name="categoryName">
             <input name='submit' type='submit'>
 
