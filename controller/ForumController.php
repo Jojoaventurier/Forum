@@ -128,13 +128,13 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager = new PostManager();
         
         $user = 1;
-        $id = $_GET['id'];
+        $id = $_GET['id']; // récupère l'id de la catégorie dans laquelle on souhaite ajouter le topic
         
         $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);  // récupère et sanitise le titre entré par l'utilisateur
         $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
 
         $date = date('Y-m-d H:i:s'); // récupère la date de création du topic
-        var_dump($_POST);
+        //var_dump($_POST);
         if (isset($_POST["submit"])) {
 
             // stockage des informations du topic dans un objet newTopic
