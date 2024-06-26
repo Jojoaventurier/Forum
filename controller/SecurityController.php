@@ -22,7 +22,7 @@ class SecurityController extends AbstractController{
     public function register() {
 
         if (isset($_POST["submit"])) {
-
+            var_dump("ok");
             $userManager = new UserManager();
 
             $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -33,25 +33,24 @@ class SecurityController extends AbstractController{
                 
             if($userName && $pass1 && $pass2) {
                 // var_dump("ok");die;
-                $requete = $userManager->prepare("SELECT * FROM user WHERE userName = :userName");
-                $requete->execute(["userName" => $userName]);
-                $user = $requete->fetch();
-
+                $user = $userManager->findOneByUserName($userName);
                 // si l'utilisateur existe
                 if($user) {
-                    header("Location: index.php?ctrl=security&action=register"); exit;
+                    //header("Location: index.php?ctrl=security&action=register"); exit;
+                    var_dump("user déjà existant");
                 } else {
                     //insertion de l'utilisateur en BDD
                     if($pass1 == $pass2 && strlen($pass1) >= 5) { // vérification que les 2 mots de passes sont identiques, et qu'il a un minimum de caractères
                         $newUser = [
                             'userName' => $userName,
-                            'password' => password_hash($password, PASSWORD_DEFAULT), // on stocke le mot de passe haché en BDD
+                            'password' => password_hash($pass1, PASSWORD_DEFAULT), // on stocke le mot de passe haché en BDD
                             'registrationDate' => $date
                         ];
                         
-                        $userManager($newUser);
+                        $userManager->add($newUser);
+                        var_dump("ok ok");
 
-                        header("Location: index.php?ctrl=home&action=index"); exit; // prendre l'habitude de faire un exit après une redirection avec la méthode header();
+                        //header("Location: index.php?ctrl=home&action=index"); exit; // prendre l'habitude de faire un exit après une redirection avec la méthode header();
                     } else {
                         // message "Les mots de passe ne sont pas identiques ou mot de passe trop court !"
                     }
@@ -61,7 +60,7 @@ class SecurityController extends AbstractController{
             }
         
         // par défaut j'affiche le formulaire d'inscription
-        header("Location: index.php?ctrl=security&action=register"); exit;
+        //header("Location: index.php?ctrl=security&action=register"); exit;
 
         }
     }

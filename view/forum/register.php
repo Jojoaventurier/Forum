@@ -3,7 +3,7 @@
 <div class="centered">
     <h1>S'inscrire</h1>
     <form action="index.php?ctrl=security&action=register" method="POST">
-        <label for="pseudo">Pseudo</label>
+        <label for="userName">Pseudo</label>
         <input type="text" name="userName" id="userName"><br>
 
         <label for="pass1">Mot de passe</label>
