@@ -11,6 +11,8 @@ final class User extends Entity{
 
     private $id;
     private $userName;
+    private $password;
+    private $registrationDate;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -53,5 +55,45 @@ final class User extends Entity{
 
     public function __toString() {
         return $this->userName;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of registrationDate
+     */ 
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
+    }
+
+    /**
+     * Set the value of registrationDate
+     *
+     * @return  self
+     */ 
+    public function setRegistrationDate($registrationDate)
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Controller;
 
+use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
@@ -81,12 +82,14 @@ class SecurityController extends AbstractController{
 
             if($userName && $password) {
 
-                $user = $userManager->findOneByUserName($userName); 
-                var_dump("$user");
-
-                if($user) {                         // on vérifie qu'on vérifie bien un user de la BDD
-                    //$hash = $user["password"];          // on récupère le mot de passe haché de la BDD (accessible depuis la variable $user)
-                    //var_dump($hash);
+                $userRequest = $userManager->findOneByUserName($userName); //TODO: ne récupère qu'un string
+                $user = $userRequest->fetch();
+                var_dump($userRequest);
+                var_dump($user);
+                
+                if($user) {                         // on vérifie qu'on a bien un user qui correspond dans la BDD
+                    $hash = $user["password"];          // on récupère le mot de passe haché de la BDD (accessible depuis la variable $user)
+                    var_dump($hash);
                     if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
 
                         var_dump("ok ok");
