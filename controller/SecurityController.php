@@ -48,7 +48,7 @@ class SecurityController extends AbstractController{
                         ];
                         
                         $userManager->add($newUser);
-                        var_dump("ok ok"); //TODO: ajouter un message de confirmation de de l'inscription au forum
+                            echo "<p>Merci pour votre inscription sur le forum</p>"; //TODO: ajouter un message de confirmation de de l'inscription au forum
 
                         header("Location: index.php?ctrl=home&action=index");
                     } else {
