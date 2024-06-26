@@ -37,7 +37,7 @@ class SecurityController extends AbstractController{
                 // si l'utilisateur existe
                 if($user) {
                     //header("Location: index.php?ctrl=security&action=register"); exit;
-                    var_dump("user déjà existant");
+                    var_dump("user déjà existant"); //TODO: ajouter un message d'erreur
                 } else {
                     //insertion de l'utilisateur en BDD
                     if($pass1 == $pass2 && strlen($pass1) >= 5) { // vérification que les 2 mots de passes sont identiques, et qu'il a un minimum de caractères
@@ -48,15 +48,15 @@ class SecurityController extends AbstractController{
                         ];
                         
                         $userManager->add($newUser);
-                        var_dump("ok ok");
+                        var_dump("ok ok"); //TODO: ajouter un message de confirmation de de l'inscription au forum
 
-                        //header("Location: index.php?ctrl=home&action=index"); exit; // prendre l'habitude de faire un exit après une redirection avec la méthode header();
+                        header("Location: index.php?ctrl=home&action=index");
                     } else {
-                        // message "Les mots de passe ne sont pas identiques ou mot de passe trop court !"
+                        // message "Les mots de passe ne sont pas identiques ou mot de passe trop court !" //TODO: ajouter message d'"erreur
                     }
                 }
             } else {
-                // problème de saisie dans les champs de formulaire
+                // problème de saisie dans les champs de formulaire //TODO: ajouter message d'"erreur
             }
         
         // par défaut j'affiche le formulaire d'inscription
