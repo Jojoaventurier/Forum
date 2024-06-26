@@ -18,7 +18,7 @@ class UserManager extends Manager{
     public function findOneByUserName($userName){
 
         $sql = "SELECT *
-                FROM ".$this->tableName." a
+                FROM ".$this->tableName." 
                 WHERE userName = :userName
                 ";
     

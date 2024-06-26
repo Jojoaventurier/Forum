@@ -36,7 +36,7 @@
                                     }
                                     else{
                                         ?>
-                                            <li><a class="nav-link" href="index.php?ctrl=security&action=login">Connexion</a></li>
+                                            <li><a class="nav-link" href="index.php?ctrl=security&action=loginForm">Connexion</a></li>
                                             <li><a class="nav-link" href="index.php?ctrl=security&action=registerForm">Inscription</a></li>
                                     </ul>
                                     <?php

@@ -22,7 +22,7 @@ class SecurityController extends AbstractController{
     public function register() {
 
         if (isset($_POST["submit"])) {
-            var_dump("ok");
+            
             $userManager = new UserManager();
 
             $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -32,46 +32,79 @@ class SecurityController extends AbstractController{
             $date = date('Y-m-d H:i:s'); // récupère la date actuelle
                 
             if($userName && $pass1 && $pass2) {
-                // var_dump("ok");die;
+                
                 $user = $userManager->findOneByUserName($userName);
+
                 // si l'utilisateur existe
                 if($user) {
-                    //header("Location: index.php?ctrl=security&action=register"); exit;
-                    var_dump("user déjà existant"); //TODO: ajouter un message d'erreur
+                    echo "<p>Nom d'utilisateur déjà existant</p>"; //TODO: ajouter un message d'erreur
+                    header("Location: index.php?ctrl=security&action=registerForm"); exit;
                 } else {
                     //insertion de l'utilisateur en BDD
-                    if($pass1 == $pass2 && strlen($pass1) >= 5) { // vérification que les 2 mots de passes sont identiques, et qu'il a un minimum de caractères
+                    if($pass1 == $pass2 && strlen($pass1) >= 5) {       // vérification que les 2 mots de passes sont identiques, et qu'il a un minimum de caractères
                         $newUser = [
-                            'userName' => $userName,
-                            'password' => password_hash($pass1, PASSWORD_DEFAULT), // on stocke le mot de passe haché en BDD
-                            'registrationDate' => $date
+                            'userName' => $userName,                // on attribue le username saisi par l'utilisateur 
+                            'password' => password_hash($pass1, PASSWORD_DEFAULT),          // on stocke le mot de passe haché en BDD
+                            'registrationDate' => $date             // on attribue la date actuelle au champs registrationDate
                         ];
                         
                         $userManager->add($newUser);
-                            echo "<p>Merci pour votre inscription sur le forum</p>"; //TODO: ajouter un message de confirmation de de l'inscription au forum
+                        echo "<p>Merci pour votre inscription sur le forum</p>"; //TODO: ajouter un message de confirmation de de l'inscription au forum
 
                         header("Location: index.php?ctrl=home&action=index");
                     } else {
-                        // message "Les mots de passe ne sont pas identiques ou mot de passe trop court !" //TODO: ajouter message d'"erreur
+                        echo "<p>Les mots de passe ne sont pas identiques ou mot de passe trop court !</p>"; //TODO: ajouter message d'"erreur
                     }
                 }
             } else {
                 // problème de saisie dans les champs de formulaire //TODO: ajouter message d'"erreur
             }
-        
-        // par défaut j'affiche le formulaire d'inscription
-        //header("Location: index.php?ctrl=security&action=register"); exit;
-
         }
     }
 
+    public function loginForm() {
+        return [
+            "view" => VIEW_DIR."forum/login.php",
+            "meta_description" => "Formulaire de connexion au forum",
+            "data" => []
+        ];
+    }
 
+    public function login () {
 
+        if($_POST["submit"]) {      // si le formulaire est soumis
 
+            $userManager = new UserManager();
 
+            $userName = filter_input(INPUT_POST, "userName",FILTER_SANITIZE_FULL_SPECIAL_CHARS);         // filtre pour lutter contre la faille XSS
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+            if($userName && $password) {
 
+                $user = $userManager->findOneByUserName($userName); 
+                var_dump("$user");
 
-    public function login () {}
+                if($user) {                         // on vérifie qu'on vérifie bien un user de la BDD
+                    //$hash = $user["password"];          // on récupère le mot de passe haché de la BDD (accessible depuis la variable $user)
+                    //var_dump($hash);
+                    if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
+
+                        var_dump("ok ok");
+                        $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
+                        
+                       // header("Location: index.php?ctrl=home&action=index"); //exit;         // on redirige l'utilisateur sur la page d'accueil
+                    } else {
+                       // header("Location: index.php?ctrl=security&action=loginForm"); //exit;
+                        // message utilisateur inconnu ou mot de passe incorrect   
+                    } 
+                 } else {
+                  //  header("Location: index.php?ctrl=security&action=loginForm"); //exit;
+                    // message utilisateur inconnu ou mot de passe incorrect
+                }
+            }
+        }
+    }
+  
+
     public function logout () {}
 }
