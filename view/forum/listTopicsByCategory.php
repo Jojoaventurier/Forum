@@ -26,23 +26,24 @@
       <?php } } ?>
   </div>
 
-<!-- Formulaire pour ajouter un sujet sur le forum (il sera ajouté à la catégorie sur laquelle on est) -->
-  <div class='formBox'>
-        <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
+  <!-- Formulaire pour ajouter un sujet sur le forum (il sera ajouté à la catégorie sur laquelle on est) -->
+  <?php if (isset($_SESSION['user'])) { ?>
+    <div class='formBox'>
+          <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
 
-            <h4 class='black'>Ajouter un topic</h4>
-              <p class="uk-comment">
-                <label for="newTopicTitle"> Titre</label><br>
-                <input required type='text' name='newTopicTitle'>
-              </p>
-              <br>
-              <p class="uk-text-default">
-                <label for="newTopicMessage"> Message</label><br>
-                <textarea required type="text" name="newTopicMessage" rows='10' cols='120'></textarea>
-              </p><br>
-            <input name='submit' type='submit'>
+              <h4 class='black'>Ajouter un topic</h4>
+                <p class="uk-comment">
+                  <label for="newTopicTitle"> Titre</label><br>
+                  <input required type='text' name='newTopicTitle'>
+                </p>
+                <br>
+                <p class="uk-text-default">
+                  <label for="newTopicMessage"> Message</label><br>
+                  <textarea required type="text" name="newTopicMessage" rows='10' cols='120'></textarea>
+                </p><br>
+              <input name='submit' type='submit'>
 
-        </form>
-    </div>
-
+          </form>
+      </div>
+    <?php } ?>
 </div>

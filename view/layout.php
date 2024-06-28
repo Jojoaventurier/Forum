@@ -18,7 +18,7 @@
                         <nav>
                             <div id="nav">
                                 <ul class='navigation'>
-                                    <li><a class="nav-link marginLeft" href="/"></i>Accueil</a></li>
+                                    <li><a class="nav-link marginLeft" href="index.php?ctrl=home&action=index"></i>Accueil</a></li>
                                 
                                     <?php // si l'admin est connecté
                                     if(App\Session::isAdmin()){
