@@ -96,4 +96,12 @@ final class User extends Entity{
 
         return $this;
     }
+
+    public function hasRole($role) {
+            if ($role == "ROLE_ADMIN") {
+                return true;
+            } else {
+                return false;
+            }
+    }
 }
