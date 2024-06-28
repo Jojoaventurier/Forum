@@ -8,9 +8,17 @@
 
     <div class='titleBox'>
         <p>Topic</p>
-        <h1><?= $topic  ?></h1>
+        <h1><?= $topic ?></h1>
+        <p>Créé par <?= $topic->getUser() ?> le <?= $topic->getCreationDate() ?> </p>
 
-        <?php    
+        <?php 
+            if (App\Session::isAdmin()) { ?>
+
+            <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
+            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
+        <?php    }  
+            
+            
             if (isset($_SESSION['user'])) { 
                 if ($topic->getUser()->getId() == $_SESSION['user']->getId()) { ?>
             <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
@@ -38,16 +46,17 @@
                                     </div> <!-- Boutons pour modifier/supprimer le post -->
                             <?php    
                             if (isset($_SESSION['user'])) {
-
-                                if ($post->getUser()->getId() == $_SESSION['user']->getId()) { ?>
+                                
+                                if (App\Session::isAdmin()) { ?>
                                     <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
                                     <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
-                            <?php  }
 
-                            }
+                            <?php  } else if ($post->getUser()->getId() == $_SESSION['user']->getId()) { ?>
 
-                            ?>
-                                
+                                <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
+                                <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
+
+                            <?php  }  } ?>
                                 </div>  
                             </div>
                         </a>
@@ -57,7 +66,7 @@
 
 
     <!--Formulaire pour ajouter un post au topic -->
-    <?php if (isset($_SESSION['user']) || $_SESSION['user']->getRole ) { ?>
+    <?php if (isset($_SESSION['user']) || isset($_SESSION['user']->getRole )) { ?>
         <div class='formBox'>
             <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
                 <p class="uk-text-emphasis">Répondre</p>

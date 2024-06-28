@@ -23,11 +23,6 @@
                 Liste des topics
             </div>
         </a>
-        <a class ='homelinks' href="index.php?ctrl=forum&action=listUsers"> <!--!!!!TODO: SEULEMENT POUR ADMIN !!!! -->
-            <div class='cardTitle'>
-                Liste des utilisateurs
-            </div>
-        </a>
     </div>
 </div>
 

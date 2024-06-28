@@ -160,7 +160,7 @@ class ForumController extends AbstractController implements ControllerInterface{
             ];
             $postManager->add($newPost); // insertion du nouveau post à la BDD
 
-            //$this->redirectTo("forum", 'index');
+            $this->redirectTo("forum", 'index');
         }
     }
 
