@@ -246,6 +246,4 @@ class ForumController extends AbstractController implements ControllerInterface{
         $this->redirectTo("forum", 'index');
 
     }
-
-
 }

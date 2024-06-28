@@ -47,7 +47,7 @@ class SecurityController extends AbstractController{
                             'userName' => $userName,                // on attribue le username saisi par l'utilisateur 
                             'password' => password_hash($pass1, PASSWORD_DEFAULT),          // on stocke le mot de passe haché en BDD
                             'registrationDate' => $date,             // on attribue la date actuelle au champs registrationDate
-                            'role' => json_encode(['ROLE_USER'])     // on attribue un rôle de base à tout utilisateur qui s'inscrit
+                            'roles' => json_encode(['ROLE_USER'])     // on attribue un rôle de base à tout utilisateur qui s'inscrit
                         ];
                         
                         $userManager->add($newUser);
