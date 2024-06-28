@@ -92,7 +92,6 @@ class SecurityController extends AbstractController{
 
                     if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
 
-                        var_dump("ok ok");
                         $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
                         
                         header("Location: index.php?ctrl=home&action=index"); //exit;         // on redirige l'utilisateur sur la page d'accueil

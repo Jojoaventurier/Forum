@@ -57,7 +57,7 @@
 
 
     <!--Formulaire pour ajouter un post au topic -->
-    <?php if (isset($_SESSION['user'])) { ?>
+    <?php if (isset($_SESSION['user']) || $_SESSION['user']->getRole ) { ?>
         <div class='formBox'>
             <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
                 <p class="uk-text-emphasis">Répondre</p>

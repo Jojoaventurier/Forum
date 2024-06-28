@@ -23,7 +23,7 @@
     <!--Formulaire d'ajout d'une catégorie à la BDD -->
 
     <?php // si l'admin est connecté
-    var_dump($_SESSION['user']);
+    
     if(App\Session::isAdmin()) { ?>
                                                             
         <div class='formBox'>
