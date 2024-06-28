@@ -108,5 +108,8 @@ class SecurityController extends AbstractController{
     }
   
 
-    public function logout () {}
+    public function logout () {
+        unset($_SESSION["user"]);
+        header("Location: index.php?ctrl=home&action=index"); exit;
+    }
 }
