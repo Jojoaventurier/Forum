@@ -46,7 +46,8 @@ class SecurityController extends AbstractController{
                         $newUser = [
                             'userName' => $userName,                // on attribue le username saisi par l'utilisateur 
                             'password' => password_hash($pass1, PASSWORD_DEFAULT),          // on stocke le mot de passe haché en BDD
-                            'registrationDate' => $date             // on attribue la date actuelle au champs registrationDate
+                            'registrationDate' => $date,             // on attribue la date actuelle au champs registrationDate
+                            'role' => json_encode(['ROLE_USER'])     // on attribue la date actuelle au champs registrationDate
                         ];
                         
                         $userManager->add($newUser);
@@ -84,11 +85,11 @@ class SecurityController extends AbstractController{
 
             if($userName && $password) {
 
-                $user = $userManager->findOneByUserName($userName); //TODO: ne récupère qu'un string
+                $user = $userManager->findOneByUserName($userName); //on récupère les données de l'utilisateur que l'on stocke dans une variable $user
                 
-                if($user) {                         // on vérifie qu'on a bien un user qui correspond dans la BDD
+                if($user) {                         // on vérifie qu'on a bien un user qui existe dans la BDD
                     $hash = $user->getPassword();          // on récupère le mot de passe haché de la BDD (accessible depuis la variable $user)
-                    var_dump($hash);
+
                     if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
 
                         var_dump("ok ok");

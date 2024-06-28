@@ -39,9 +39,7 @@
                                             <li><a class="nav-link" href="index.php?ctrl=security&action=loginForm">Connexion</a></li>
                                             <li><a class="nav-link" href="index.php?ctrl=security&action=registerForm">Inscription</a></li>
                                     </ul>
-                                    <?php
-                                }
-                                ?>
+                                    <?php    } ?>
                             </div>
                             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
                             <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>

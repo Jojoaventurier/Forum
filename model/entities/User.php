@@ -13,6 +13,7 @@ final class User extends Entity{
     private $userName;
     private $password;
     private $registrationDate;
+    private $role;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -53,10 +54,7 @@ final class User extends Entity{
         return $this;
     }
 
-    public function __toString() {
-        return $this->userName;
-    }
-
+    
     /**
      * Get the value of password
      */ 
@@ -64,7 +62,7 @@ final class User extends Entity{
     {
         return $this->password;
     }
-
+    
     /**
      * Set the value of password
      *
@@ -73,10 +71,10 @@ final class User extends Entity{
     public function setPassword($password)
     {
         $this->password = $password;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of registrationDate
      */ 
@@ -84,7 +82,7 @@ final class User extends Entity{
     {
         return $this->registrationDate;
     }
-
+    
     /**
      * Set the value of registrationDate
      *
@@ -93,15 +91,40 @@ final class User extends Entity{
     public function setRegistrationDate($registrationDate)
     {
         $this->registrationDate = $registrationDate;
-
+        
         return $this;
     }
-
+    
+    
+    /**
+     * Get the value of role
+     */ 
+    public function getRole()
+    {
+        return $this->role;
+    }
+    
+    /**
+     * Set the value of role
+     *
+     * @return  self
+     */ 
+    public function setRole($role)
+    {
+        $this->role = $role;
+        
+        return $this;
+    }
+    
+    public function __toString() {
+        return $this->userName;
+    }
+    
     public function hasRole($role) {
-            if ($role == "ROLE_ADMIN") {
-                return true;
-            } else {
-                return false;
-            }
+        if ($role == "ROLE_ADMIN") {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
