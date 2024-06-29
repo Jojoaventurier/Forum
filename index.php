@@ -64,3 +64,6 @@ else{
     /* j'affiche le template principal (layout) */
     include VIEW_DIR."layout.php";
 }
+
+//TODO: regex pour mot de passe
+//TODO: un admin controller
