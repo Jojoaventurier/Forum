@@ -23,11 +23,6 @@
                 Liste des topics
             </div>
         </a>
-        <a class ='homelinks' href="index.php?ctrl=forum&action=listUsers">
-            <div class='cardTitle'>
-                Liste des utilisateurs
-            </div>
-        </a>
     </div>
 </div>
 
@@ -49,6 +44,5 @@
 
         <?php } ?>
     </div>
-
 </div>
    

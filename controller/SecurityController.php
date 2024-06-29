@@ -46,14 +46,17 @@ class SecurityController extends AbstractController{
                         $newUser = [
                             'userName' => $userName,                // on attribue le username saisi par l'utilisateur 
                             'password' => password_hash($pass1, PASSWORD_DEFAULT),          // on stocke le mot de passe haché en BDD
-                            'registrationDate' => $date             // on attribue la date actuelle au champs registrationDate
+                            'registrationDate' => $date,             // on attribue la date actuelle au champs registrationDate
+                            'roles' => json_encode(['ROLE_USER'])     // on attribue un rôle de base à tout utilisateur qui s'inscrit
                         ];
                         
                         $userManager->add($newUser);
-                        echo "<p>Merci pour votre inscription sur le forum</p>"; //TODO: ajouter un message de confirmation de de l'inscription au forum
 
+                        echo "<p>Merci pour votre inscription sur le forum</p>"; //TODO: ajouter un message de confirmation de de l'inscription au forum
                         header("Location: index.php?ctrl=home&action=index");
+
                     } else {
+
                         echo "<p>Les mots de passe ne sont pas identiques ou mot de passe trop court !</p>"; //TODO: ajouter message d'"erreur
                     }
                 }
@@ -82,20 +85,16 @@ class SecurityController extends AbstractController{
 
             if($userName && $password) {
 
-                $userRequest = $userManager->findOneByUserName($userName); //TODO: ne récupère qu'un string
-                $user = $userRequest->fetch();
-                var_dump($userRequest);
-                var_dump($user);
+                $user = $userManager->findOneByUserName($userName); //on récupère les données de l'utilisateur que l'on stocke dans une variable $user
                 
-                if($user) {                         // on vérifie qu'on a bien un user qui correspond dans la BDD
-                    $hash = $user["password"];          // on récupère le mot de passe haché de la BDD (accessible depuis la variable $user)
-                    var_dump($hash);
+                if($user) {                         // on vérifie qu'on a bien un user qui existe dans la BDD
+                    $hash = $user->getPassword();          // on récupère le mot de passe haché de la BDD (accessible depuis la variable $user)
+
                     if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
 
-                        var_dump("ok ok");
                         $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
                         
-                       // header("Location: index.php?ctrl=home&action=index"); //exit;         // on redirige l'utilisateur sur la page d'accueil
+                        header("Location: index.php?ctrl=home&action=index"); //exit;         // on redirige l'utilisateur sur la page d'accueil
                     } else {
                        // header("Location: index.php?ctrl=security&action=loginForm"); //exit;
                         // message utilisateur inconnu ou mot de passe incorrect   
@@ -109,5 +108,8 @@ class SecurityController extends AbstractController{
     }
   
 
-    public function logout () {}
+    public function logout () {
+        unset($_SESSION["user"]);
+        header("Location: index.php?ctrl=home&action=index"); exit;
+    }
 }

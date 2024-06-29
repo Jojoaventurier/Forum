@@ -18,12 +18,12 @@
                         <nav>
                             <div id="nav">
                                 <ul class='navigation'>
-                                    <li><a class="nav-link marginLeft" href="/"></i>Accueil</a></li>
+                                    <li><a class="nav-link marginLeft" href="index.php?ctrl=home&action=index"></i>Accueil</a></li>
                                 
                                     <?php // si l'admin est connecté
                                     if(App\Session::isAdmin()){
                                         ?>
-                                        <li><a href="index.php?ctrl=home&action=users">Voir la liste des gens</a></li>
+                                        <li><a href="index.php?ctrl=forum&action=listUsers">Voir la liste des utilisateurs</a></li>
                                         <?php } 
 
                                     // si l'utilisateur est connecté 
@@ -39,9 +39,7 @@
                                             <li><a class="nav-link" href="index.php?ctrl=security&action=loginForm">Connexion</a></li>
                                             <li><a class="nav-link" href="index.php?ctrl=security&action=registerForm">Inscription</a></li>
                                     </ul>
-                                    <?php
-                                }
-                                ?>
+                                    <?php    } ?>
                             </div>
                             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
                             <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>

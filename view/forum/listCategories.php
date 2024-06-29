@@ -21,15 +21,21 @@
 
 
     <!--Formulaire d'ajout d'une catégorie à la BDD -->
-    <div class='formBox'>
-        <form action="index.php?ctrl=forum&action=addCategory" method="post">
 
-            <label for="addCategory">Ajouter une catégorie</label>
-            <input required type="text" name="categoryName">
-            <input name='submit' type='submit'>
-        </form>
-    </div>
+    <?php // si l'admin est connecté
+    
+    if(App\Session::isAdmin()) { ?>
+                                                            
+        <div class='formBox'>
+            <form action="index.php?ctrl=forum&action=addCategory" method="post">
 
+                <label for="addCategory">Ajouter une catégorie</label>
+                <input required type="text" name="categoryName">
+                <input name='submit' type='submit'>
+            </form>
+        </div>
+        
+    <?php } ?>
 
 </div>
 

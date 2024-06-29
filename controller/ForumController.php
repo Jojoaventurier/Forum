@@ -126,8 +126,12 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $topicManager = new TopicManager();
         $postManager = new PostManager();
+        $userManager = new UserManager();
         
-        $user = 1;
+        if (isset($_SESSION['user'])) {
+            $user = $_SESSION['user']->getId();
+            }; 
+
         $id = $_GET['id']; // récupère l'id de la catégorie dans laquelle on souhaite ajouter le topic
         
         $newTopicTitle = filter_input(INPUT_POST, 'newTopicTitle', FILTER_SANITIZE_FULL_SPECIAL_CHARS);  // récupère et sanitise le titre entré par l'utilisateur
@@ -164,11 +168,15 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function addPost($id) {
 
         $postManager = new PostManager();
+        $userManager = new UserManager();
 
         $id = $_GET['id']; // récupération de l'id du topic où on ajoute un message
         $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
         $date = $date = date('Y-m-d H:i:s'); // récupère la date de création du post
-        $user = 1;
+
+        if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user']->getId();
+        };   
 
         // stockage des informations dans un objet Post
         $newPost = [
@@ -238,6 +246,4 @@ class ForumController extends AbstractController implements ControllerInterface{
         $this->redirectTo("forum", 'index');
 
     }
-
-
 }
