@@ -95,18 +95,22 @@ class SecurityController extends AbstractController{
                     if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
 
                         $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
-                        
-                        header("Location: index.php?ctrl=home&action=index"); //exit;         // on redirige l'utilisateur sur la page d'accueil
+                        Session::addFlash("success", "Vous êtes connectés, bienvenue !");
+                        $this->redirectTo("home"); // on redirige l'utilisateur sur la page d'accueil
                     } else {
                        // header("Location: index.php?ctrl=security&action=loginForm"); //exit;
-                        // message utilisateur inconnu ou mot de passe incorrect   
+                       Session::addFlash("error", "Le mot de passe est faux !");  
                     } 
-                 } else {
-                  //  header("Location: index.php?ctrl=security&action=loginForm"); //exit;
-                    // message utilisateur inconnu ou mot de passe incorrect
-                }
-            } 
+                 } 
+               
+            } else {
+                Session::addFlash("error", "Vous n'avez pas rempli tous les champs !");
+            }
         }
+        return [
+            "view" => VIEW_DIR."forum/login.php",
+            "meta_description" => "Page de connection"
+        ];
     }
   
 
