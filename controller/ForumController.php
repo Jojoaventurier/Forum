@@ -87,40 +87,6 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
 
-    public function listUsers() {
-        // créé une nouvelle instance de UserManager
-        $userManager = new UserManager();
-
-        $users = $userManager->findAll(["registrationDate", "DESC"]); // récupère tous les utilisateurs enregistrés
-
-        // le controller communique avec la vue "listUsers" pour lui envoyer la liste des utilisateurs (data)
-        return [
-            "view" => VIEW_DIR."forum/listUsers.php",
-            "meta_description" => "Liste de tous les utilisateurs du forum",
-            "data" => [ 
-                "users" => $users
-            ]
-        ];
-    }
-
-
-    // permet d'ajouter une catégorie à la BDD
-    public function addCategory() {
-       
-        $categoryManager = new CategoryManager();
-
-        $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise les valeurs de champs entrées par l'utilisateur
-
-        if (isset($_POST["submit"]) && strlen($categoryName) != 0) { // vérifie que l'utilisateur a entré quelque chose
-
-            $category = [ 'categoryName' => $categoryName];
-
-            $categoryManager->add($category);  
-
-            $this->redirectTo("forum", "index");
-        }
-    }
-
     // permet d'ajouter un topic à une catégorie, avec création d'un premier post obligatoire
     public function addTopic($id) {
 

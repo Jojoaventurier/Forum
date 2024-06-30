@@ -35,14 +35,12 @@ class SecurityController extends AbstractController{
             if($userName && $pass1 && $pass2) {
                 
                 $user = $userManager->findOneByUserName($userName);
-
                 // si l'utilisateur existe
                 if($user) {
-                    echo "<p>Nom d'utilisateur déjà existant</p>"; //TODO: ajouter un message d'erreur
-                    header("Location: index.php?ctrl=security&action=registerForm"); exit;
+                    Session::addFlash("error", "Ce nom d'utilisateur existe déjà !");
                 } else {
                     //insertion de l'utilisateur en BDD
-                    if($pass1 == $pass2 && strlen($pass1) >= 5) {       // vérification que les 2 mots de passes sont identiques, et qu'il a un minimum de caractères
+                    if($pass1 === $pass2 && strlen($pass1) >= 5) {       // vérification que les 2 mots de passes sont identiques, et qu'il a un minimum de caractères
                         $newUser = [
                             'userName' => $userName,                // on attribue le username saisi par l'utilisateur 
                             'password' => password_hash($pass1, PASSWORD_DEFAULT),          // on stocke le mot de passe haché en BDD
@@ -52,19 +50,23 @@ class SecurityController extends AbstractController{
                         
                         $userManager->add($newUser);
 
-                        echo "<p>Merci pour votre inscription sur le forum</p>"; //TODO: ajouter un message de confirmation de de l'inscription au forum
-                        header("Location: index.php?ctrl=home&action=index");
+                        Session::addFlash("success", "Inscription réussie, connectez-vous !");
+                        $this->redirectTo("security", "loginForm");
 
-                    } else {
-
-                        echo "<p>Les mots de passe ne sont pas identiques ou mot de passe trop court !</p>"; //TODO: ajouter message d'"erreur
+                        } else {
+                            Session::addFlash("error", "Le mot de passe est invalide.");
+                        }
                     }
+
+                } else {
+                    Session::addFlash("error", "Vous n'avez pas rempli tous les champs !");
                 }
-            } else {
-                // problème de saisie dans les champs de formulaire //TODO: ajouter message d'"erreur
             }
+            return [
+                "view" => VIEW_DIR."forum/register.php",
+                "meta_description" => "Page d'inscription au forum"
+            ];
         }
-    }
 
     public function loginForm() {
         return [

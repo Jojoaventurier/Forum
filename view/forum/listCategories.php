@@ -27,7 +27,7 @@
     if(App\Session::isAdmin()) { ?>
                                                             
         <div class='formBox'>
-            <form action="index.php?ctrl=forum&action=addCategory" method="post">
+            <form action="index.php?ctrl=admin&action=addCategory" method="post">
 
                 <label for="addCategory">Ajouter une catégorie</label>
                 <input required type="text" name="categoryName">

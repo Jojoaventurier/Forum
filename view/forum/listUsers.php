@@ -10,6 +10,7 @@ $users = $result["data"]['users'];
 
 foreach($users as $user) { ?>
 
-    <p class="uk-comment"><a href="#"><?= $user ?></a></p>
+    <p class="uk-comment"></p>
+    <li><a href="#"><?= $user ?></a>, inscrit depuis le <?= $user->getRegistrationDate()?></li>
 
 <?php }
