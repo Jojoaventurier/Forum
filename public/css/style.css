@@ -215,6 +215,16 @@ footer p {
 /*=========================== LIST CATEGORIES ===================== */
 
 
+.imgContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#imgCategory {
+    width: 40%;
+}
+
 .cardTitle {
 
     display: flex;
@@ -269,6 +279,17 @@ footer p {
  }
 
 /*=========================== LIST TOPICS BY CATEGORY ===================== */
+
+
+.imgContainerTopics {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#imgTopics {
+    width: 40%;
+}
 
 #topicBoard {
     display: block;
@@ -336,6 +357,9 @@ footer p {
         padding: 10px;
         /* background-color: pink; */
     }
+
+  
+    
 
 
 

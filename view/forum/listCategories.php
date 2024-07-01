@@ -5,7 +5,7 @@
 
 <div class="centered blocked">
 
-    <h1>Liste des catégories</h1>
+<div class='imgContainer'><span class="imgContainer"><h1>Liste des catégories</h1><img id="imgCategory" src="public\img\img1.webp"/></span></div>
 
     <div id="categoryBoard" class="board">
         <?php
@@ -18,6 +18,8 @@
                 </a>
         <?php } ?>
     </div>
+
+    
 
 
     <!--Formulaire d'ajout d'une catégorie à la BDD -->

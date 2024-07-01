@@ -5,7 +5,6 @@
 
 
 <div class="centered">
-
     <div class='titleBox'>
         <p>Topic</p>
         <h1><?= $topic ?></h1>
@@ -77,6 +76,8 @@
                 <input name='submit' type='submit'>
             </form>
         </div>
+
+
     <?php } ?>
 
 </div>
