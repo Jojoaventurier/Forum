@@ -2,7 +2,7 @@
 <!-- <a href="index.php?ctrl=security&action=register">S'inscrire</a> -->
 <?php
 
-    $topics = $result["data"]['topics'];    
+    $topics = $result["data"]['topics'];
 ?>
 
     <h1>FORUM DES ETUDIANTS</h1>
