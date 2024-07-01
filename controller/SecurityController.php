@@ -98,7 +98,6 @@ class SecurityController extends AbstractController{
                         Session::addFlash("success", "Vous êtes connectés, bienvenue !");
                         $this->redirectTo("home"); // on redirige l'utilisateur sur la page d'accueil
                     } else {
-                       // header("Location: index.php?ctrl=security&action=loginForm"); //exit;
                        Session::addFlash("error", "Le mot de passe est faux !");  
                     } 
                  } 
@@ -116,6 +115,7 @@ class SecurityController extends AbstractController{
 
     public function logout () {
         unset($_SESSION["user"]);
-        header("Location: index.php?ctrl=home&action=index"); exit;
+        Session::addFlash("success", "Session déconnectée !");
+        $this->redirectTo("home");
     }
 }
