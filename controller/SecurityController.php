@@ -26,15 +26,24 @@ class SecurityController extends AbstractController{
             
             $userManager = new UserManager();
 
-            $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $pass2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS); // filtre et sanitise les valeurs entrées par l'utilisateur dans le formulaire (XSS)
+            $pass1 = filter_input(INPUT_POST, "pass1", FILTER_VALIDATE_REGEXP,
+            array(
+                "options" => array("regexp"=>'^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$^') // impose au minimum 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial
+            ) );
+
+
+            $pass2 = filter_input(INPUT_POST, "pass2", FILTER_VALIDATE_REGEXP,
+            array(
+                "options" => array("regexp"=>'^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$^')
+            ) );
 
             $date = date('Y-m-d H:i:s'); // récupère la date actuelle
                 
             if($userName && $pass1 && $pass2) {
                 
-                $user = $userManager->findOneByUserName($userName);
+                $user = $userManager->findOneByUserName($userName); // cherche si un utilisateur existe déjà avec ce nom d'utilisateur
+
                 // si l'utilisateur existe
                 if($user) {
                     Session::addFlash("error", "Ce nom d'utilisateur existe déjà !");
@@ -59,7 +68,7 @@ class SecurityController extends AbstractController{
                     }
 
                 } else {
-                    Session::addFlash("error", "Vous n'avez pas rempli tous les champs !");
+                    Session::addFlash("error", "Vous n'avez pas rempli tous les champs ou le mot de passe est invalide !");
                 }
             }
             return [
@@ -83,7 +92,10 @@ class SecurityController extends AbstractController{
             $userManager = new UserManager();
 
             $userName = filter_input(INPUT_POST, "userName",FILTER_SANITIZE_FULL_SPECIAL_CHARS);         // filtre pour lutter contre la faille XSS
-            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, "password", FILTER_VALIDATE_REGEXP,
+                                        array(
+                                            "options" => array("regexp"=>'^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$^') // impose au minimum 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial
+                                        ) );
 
             if($userName && $password) {
 
@@ -114,8 +126,8 @@ class SecurityController extends AbstractController{
   
 
     public function logout () {
-        unset($_SESSION["user"]);
-        Session::addFlash("success", "Session déconnectée !");
-        $this->redirectTo("home");
+        unset($_SESSION["user"]); // on enlève l'utilisateur enregistré dans la session
+        Session::addFlash("success", "Session déconnectée !"); // message de déconnection réussie
+        $this->redirectTo("home"); // redirection vers la page d'accueil
     }
 }
