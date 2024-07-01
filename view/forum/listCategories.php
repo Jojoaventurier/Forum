@@ -5,7 +5,7 @@
 
 <div class="centered blocked">
 
-<div class='imgContainer'><span class="imgContainer"><h1>Liste des catégories</h1><img id="imgCategory" src="public\img\img1.webp"/></span></div>
+<h1>Liste des catégories</h1>
 
     <div id="categoryBoard" class="board">
         <?php

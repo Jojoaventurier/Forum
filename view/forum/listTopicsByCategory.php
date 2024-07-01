@@ -3,7 +3,7 @@
   $topics = $result["data"]['topics'];
 ?>
 
-<div class='imgContainerTopics'><span class="imgContainerTopics"><img id="imgTopics" src="public\img\img2.webp"/><h1><?= $category->getCategoryName() ?></h1></span></div>
+<h1><?= $category->getCategoryName() ?></h1>
 
 
 

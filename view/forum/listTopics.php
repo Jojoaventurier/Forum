@@ -4,7 +4,7 @@
 
 <div class="centered">
 
-<div class='imgContainer'><span class="imgContainer"><h1>Liste des topics</h1><img id="imgCategory" src="public\img\img3.webp"/></span></div>
+<h1>Liste des topics</h1>
     
 
     <div id="topicBoard" class="board">
