@@ -29,7 +29,7 @@
                                     // si l'utilisateur est connecté 
                                     if(App\Session::getUser()){
                                         ?> 
-                                        <li><a class="nav-link" href="index.php?ctrl=security&action=profile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a></li>
+                                        <li></span>&nbsp;<?= App\Session::getUser()?></li>
                                         <li><a class="nav-link" href="index.php?ctrl=security&action=logout">Déconnexion</a></li>
                                             
                                             <?php

@@ -19,11 +19,6 @@
                 Liste des catégories
             </div>
         </a>
-        <a class ='homelinks' href="index.php?ctrl=forum&action=listTopics">
-            <div class='cardTitle'>
-                Liste des topics
-            </div>
-        </a>
     </div>
 </div>
 
