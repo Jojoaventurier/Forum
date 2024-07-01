@@ -1,6 +1,7 @@
 <!-- <a href="index.php?ctrl=security&action=login">Se connecter</a> -->
 <!-- <a href="index.php?ctrl=security&action=register">S'inscrire</a> -->
 <?php
+
     $topics = $result["data"]['topics'];    
 ?>
 
