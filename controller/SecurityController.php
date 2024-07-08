@@ -109,13 +109,13 @@ class SecurityController extends AbstractController{
                         $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
                         Session::addFlash("success", "Vous êtes connectés, bienvenue !");
                         $this->redirectTo("home"); // on redirige l'utilisateur sur la page d'accueil
-                    } else {
-                       Session::addFlash("error", "Le mot de passe est faux !");  
                     } 
+                 } else {
+                    Session::addFlash("error", "Le mot de passe est faux !");  
                  } 
                
             } else {
-                Session::addFlash("error", "Vous n'avez pas rempli tous les champs !");
+                Session::addFlash("error", "Le nom d'utilisateur ou le mot de passe est faux !");
             }
         }
         return [
