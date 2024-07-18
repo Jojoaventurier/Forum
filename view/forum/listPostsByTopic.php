@@ -14,13 +14,12 @@
         <?php 
             if (App\Session::isAdmin()) { ?>
 
-            <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
             <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
         <?php    }  
             
             if (isset($_SESSION['user'])) { 
                 if ($topic->getUser()->getId() == $_SESSION['user']->getId()) { ?>
-            <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
+                
             <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
 
         <?php  } }   ?>
