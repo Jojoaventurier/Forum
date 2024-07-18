@@ -14,13 +14,13 @@
         <?php 
             if (App\Session::isAdmin()) { ?>
 
-            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
+            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>&jeton=<?=$_SESSION['jeton']?>">Supprimer le topic</a>
         <?php    }  
             
             if (isset($_SESSION['user'])) { 
                 if ($topic->getUser()->getId() == $_SESSION['user']->getId()) { ?>
                 
-            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
+            <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>&jeton=<?=$_SESSION['jeton']?>">Supprimer le topic</a>
 
         <?php  } }   ?>
 
@@ -41,17 +41,17 @@
 
                                     <div class='textBox'>
                                         <p class="uk-text-emphasis"> <?= $post->getText() ?></p>
-                                    </div> <!-- Boutons pour modifier/supprimer le post -->
+                                    </div> 
                             <?php    
                             if (isset($_SESSION['user'])) {
                                 
-                                if (App\Session::isAdmin()) { ?>
-                                    <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
+                                if (App\Session::isAdmin()) { ?><!-- Boutons pour modifier/supprimer le post -->
+                                    <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>&jeton=<?=$_SESSION['jeton']?>">Supprimer le post</a>
                                     <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
 
                             <?php  } else if ($post->getUser()->getId() == $_SESSION['user']->getId()) { ?>
 
-                                <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId() ?>">Supprimer le post</a>
+                                <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId()?>&jeton=<?=$_SESSION['jeton']?>">Supprimer le post</a>
                                 <a href="index.php?ctrl=forum&action=displayPostEdit&id=<?= $post->getId() ?>">Modifier le post</a>
 
                             <?php  }  } ?>
@@ -72,7 +72,7 @@
                     <label for="topicPost"> Message</label><br>
                     <textarea required type="text" name="topicPost" rows='10' cols='120'></textarea>
                 </p><br>
-                <input type=hidden value=<?=$_SESSION['jeton'];?> >
+                <input name ="token" type=hidden value=<?=$_SESSION['jeton'];?> >
                 <input name='submit' type='submit'>
             </form>
         </div>

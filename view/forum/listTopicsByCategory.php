@@ -35,7 +35,7 @@
 
               <h4 class='black'>Ajouter un topic</h4>
                 <p class="uk-comment">
-                  <label for="newTopicTitle"> Titre</label><br>
+                  <label for="newTopicTitle">Titre</label><br>
                   <input required type='text' name='newTopicTitle'>
                 </p>
                 <br>
@@ -43,7 +43,7 @@
                   <label for="newTopicMessage"> Message</label><br>
                   <textarea required type="text" name="newTopicMessage" rows='10' cols='120'></textarea>
                 </p><br>
-              <input type=hidden value=<?=$_SESSION['jeton'];?> >
+              <input name ="token" type=hidden value=<?=$_SESSION['jeton'];?> >
               <input name='submit' type='submit'>
 
           </form>

@@ -93,9 +93,11 @@ class ForumController extends AbstractController implements ControllerInterface{
         $topicManager = new TopicManager();
         $postManager = new PostManager();
         $userManager = new UserManager();
+
+        $token = filter_input(INPUT_POST, 'token');
         
-        if (isset($_SESSION['user']) && isset($_GET['jeton']) && 
-        ($_GET['jeton'] == $_SESSION['jeton']))  { // jeton pour la csrf
+        if (isset($_SESSION['user']) && isset($_POST['token']) && 
+        ($token == $_SESSION['jeton']))  { // jeton pour la csrf
             $user = $_SESSION['user']->getId();
             }; 
 
@@ -105,7 +107,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $newTopicPost = filter_input(INPUT_POST, 'newTopicMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
 
         $date = date('Y-m-d H:i:s'); // récupère la date de création du topic
-        //var_dump($_POST);
+
         if (isset($_POST["submit"])) {
 
             // stockage des informations du topic dans un objet newTopic
@@ -141,10 +143,11 @@ class ForumController extends AbstractController implements ControllerInterface{
         $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
         $date = $date = date('Y-m-d H:i:s'); // récupère la date de création du post
 
-        if (isset($_SESSION['user']) && isset($_GET['jeton']) && 
-        ($_GET['jeton'] == $_SESSION['jeton'])) {
+        $token = filter_input(INPUT_POST, 'token');
+
+        if (isset($_SESSION['user']) && isset($_POST['token']) && ($token == $_SESSION['jeton'])) {
         $user = $_SESSION['user']->getId();
-        };   
+       
 
         // stockage des informations dans un objet Post
         $newPost = [
@@ -157,7 +160,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager->add($newPost); // ajout de l'objet post créé à la BDD
 
         $this->redirectTo("forum", 'index');
-    }
+    };  }
 
     // fonction de suppression d'un post (se base sur l'id du post)
     public function deletePost($id) {
@@ -165,11 +168,11 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager = new PostManager();
         $id = $_GET['id'];
 
-        if (isset($_GET['jeton']) && 
-        ($_GET['jeton'] == $_SESSION['jeton'])); // protection contre la csrf
+ 
+        if (isset($_SESSION['user']) && isset($_GET['jeton']) && ($_GET['jeton'] == $_SESSION['jeton'])) {// protection contre la csrf
 
         $postManager->delete($id);
-
+    };
         $this->redirectTo("forum", 'index');
     }
 
@@ -180,13 +183,12 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $id = $_GET['id'];
 
-        if (isset($_GET['jeton']) && 
-        ($_GET['jeton'] == $_SESSION['jeton'])); // protection contre la csrf
+        if (isset($_SESSION['user']) && isset($_GET['jeton']) && ($_GET['jeton'] == $_SESSION['jeton'])) { // protection contre la csrf
 
         $topicManager->delete($id);
-
+        };
         $this->redirectTo("forum", 'index');
-    }
+     }
 
     //fonction qui affiche le formulaire de modification d'un post
     public function displayPostEdit($id) {
@@ -212,8 +214,9 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $id = $_GET['id'];
 
-        if (isset($_GET['jeton']) && 
-        ($_GET['jeton'] == $_SESSION['jeton'])); // protection contre la csrf
+        $token = filter_input(INPUT_POST, 'token');
+
+        if (isset($_SESSION['user']) && isset($_POST['token']) && ($token == $_SESSION['jeton'])) {// protection contre la csrf
 
         $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -221,5 +224,5 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $this->redirectTo("forum", 'index');
 
-    }
+    };  }
 }

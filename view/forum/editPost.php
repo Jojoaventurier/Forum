@@ -15,7 +15,7 @@
                     <label for="topicPost"> Message</label><br>
                     <textarea required type="text" name="topicPost" rows='10' cols='120'><?= $post->getText() ?></textarea> <!-- récupère le message original du post pour faciliter la modification -->
                 </p><br>
-                <input type=hidden value=<?=$_SESSION['jeton'];?> >
+                <input name="token" type=hidden value=<?=$_SESSION['jeton'];?> >
                 <input name='submit' type='submit'>
 
             </form>
