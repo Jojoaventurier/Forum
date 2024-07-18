@@ -109,7 +109,7 @@ class SecurityController extends AbstractController{
 
                         $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
                         if (!isset($_SESSION['jeton'])) {
-                            $_SESSION['jeton'] = bin2hex(openssl_random_pseudo_bytes(6)); // génération du token pour la protection CSRF
+                            $_SESSION['jeton'] = bin2hex(openssl_random_pseudo_bytes(32)); // génération du token pour la protection CSRF
                          }
                         Session::addFlash("success", "Vous êtes connectés, bienvenue !");
                         $this->redirectTo("home"); // on redirige l'utilisateur sur la page d'accueil
