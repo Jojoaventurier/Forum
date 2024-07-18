@@ -18,14 +18,14 @@
             <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
         <?php    }  
             
-            
             if (isset($_SESSION['user'])) { 
                 if ($topic->getUser()->getId() == $_SESSION['user']->getId()) { ?>
             <a href="index.php?ctrl=forum&action=close&id=<?= $topic->getId() ?>">Verrouiller le topic</a>
             <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
+
         <?php  } }   ?>
 
-    </div> <!-- Boutons pour verrouiller / supprimer le topic -->
+    </div> 
 
     <div id="postsBoard" class="board">
         <?php 
@@ -42,7 +42,7 @@
                                     <p class="uk-comment" >Posté par <span class="uk-text-emphasis"><?= $post->getUser() ?></span></p>
 
                                     <div class='textBox'>
-                                        <p class="uk-text-emphasis"> <?= $post->getText() ?><p>
+                                        <p class="uk-text-emphasis"> <?= $post->getText() ?></p>
                                     </div> <!-- Boutons pour modifier/supprimer le post -->
                             <?php    
                             if (isset($_SESSION['user'])) {
@@ -68,7 +68,7 @@
     <!--Formulaire pour ajouter un post au topic -->
     <?php if (isset($_SESSION['user']) || isset($_SESSION['user']->getRole )) { ?>
         <div class='formBox'>
-            <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId()?>&jeton= <?=$_SESSION['jeton']?>" method="post">
+            <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId()?>&jeton=<?=$_SESSION['jeton']?>" method="post">
                 <p class="uk-text-emphasis">Répondre</p>
                 <p class="uk-comment">
                     <label for="topicPost"> Message</label><br>

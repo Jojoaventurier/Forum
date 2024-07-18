@@ -90,7 +90,7 @@ class SecurityController extends AbstractController{
         if($_POST["submit"]) {      // si le formulaire est soumis
 
             unset($_SESSION['jeton']); // protection csrf
-            
+
             $userManager = new UserManager();
 
             $userName = filter_input(INPUT_POST, "userName",FILTER_SANITIZE_FULL_SPECIAL_CHARS);         // filtre pour lutter contre la faille XSS
@@ -109,6 +109,9 @@ class SecurityController extends AbstractController{
                     if(password_verify($password, $hash)) {         // on vérifie vérifie que les empreintes numériques correspondent
 
                         $_SESSION["user"] = $user;                  // si les mdp correspondent, on met $user en session à l'aide de la superglobale $_SESSION
+                        if (!isset($_SESSION['jeton'])) {
+                            $_SESSION['jeton'] = bin2hex(openssl_random_pseudo_bytes(6)); // génération du token pour la protection CSRF
+                         }
                         Session::addFlash("success", "Vous êtes connectés, bienvenue !");
                         $this->redirectTo("home"); // on redirige l'utilisateur sur la page d'accueil
                     } 
