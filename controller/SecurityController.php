@@ -89,16 +89,15 @@ class SecurityController extends AbstractController{
 
         if($_POST["submit"]) {      // si le formulaire est soumis
 
-            unset($_SESSION['jeton']); // protection csrf
+            unset($_SESSION['jeton']); // protection csrf (on enlève le jeton de la session au cas où il y en avais déjà un généré)
 
             $userManager = new UserManager();
 
             $userName = filter_input(INPUT_POST, "userName",FILTER_SANITIZE_FULL_SPECIAL_CHARS);         // filtre pour lutter contre la faille XSS
             $password = filter_input(INPUT_POST, "password", FILTER_VALIDATE_REGEXP,
-                                        array(
-                                            "options" => array("regexp"=>'^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$^') // impose au minimum 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial
-                                        ) );
-
+                array(
+                    "options" => array("regexp"=>'^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$^') // impose au minimum 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial
+                ) );
             if($userName && $password) {
 
                 $user = $userManager->findOneByUserName($userName); //on récupère les données de l'utilisateur que l'on stocke dans une variable $user
@@ -115,10 +114,9 @@ class SecurityController extends AbstractController{
                         Session::addFlash("success", "Vous êtes connectés, bienvenue !");
                         $this->redirectTo("home"); // on redirige l'utilisateur sur la page d'accueil
                     } 
-                 } else {
+                } else {
                     Session::addFlash("error", "Le mot de passe est faux !");  
-                 } 
-               
+                } 
             } else {
                 Session::addFlash("error", "Le nom d'utilisateur ou le mot de passe est faux !");
             }
