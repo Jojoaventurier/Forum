@@ -1,4 +1,5 @@
 <?php
+    require 'config.php';
     $topics = $result["data"]['topics'];    
 ?>
 
@@ -12,7 +13,7 @@
 
         foreach($topics as $topic ){ ?> 
             <!-- Affiche l'intégralité des topics enregistrés sur le forum (du plus récent au plus vieux) -->
-            <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>">
+            <a href="index.php?ctrl=forum&action=listPostsByTopic&id=<?= $topic->getId() ?>&jeton= <?=$_SESSION['jeton']?>">
                 <div class="topicCard">
                     <h4 class='black'><?=$topic->getTitle()?></h4>
                     <p class="uk-comment">créé par <span class='bold'><?= $topic->getUser() ?></span>, le <?= $topic->getCreationDate(); // <?= $topic->getCategory()?></p>

@@ -1,4 +1,5 @@
 <?php
+  require 'config.php';
   $category = $result["data"]['category']; 
   $topics = $result["data"]['topics'];
 ?>
@@ -30,7 +31,7 @@
   <!-- Formulaire pour ajouter un sujet sur le forum (il sera ajouté à la catégorie sur laquelle on est) -->
   <?php if (isset($_SESSION['user'])) { ?>
     <div class='formBox'>
-          <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId() ?>" method="post">
+          <form action="index.php?ctrl=forum&action=addTopic&id=<?= $category->getId()?>&jeton= <?=$_SESSION['jeton']?>" method="post">
 
               <h4 class='black'>Ajouter un topic</h4>
                 <p class="uk-comment">

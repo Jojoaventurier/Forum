@@ -1,4 +1,5 @@
 <?php
+    require 'config.php';
     $categories = $result["data"]['categories']; 
 ?>
 
@@ -29,7 +30,7 @@
     if(App\Session::isAdmin()) { ?>
                                                             
         <div class='formBox'>
-            <form action="index.php?ctrl=admin&action=addCategory" method="post">
+            <form action="index.php?ctrl=admin&action=addCategory&jeton=<?= $_SESSION['jeton']?>" method="post">
 
                 <label for="addCategory">Ajouter une catégorie</label>
                 <input required type="text" name="categoryName">

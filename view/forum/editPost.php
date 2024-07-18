@@ -1,4 +1,5 @@
 <?php     
+    require 'config.php';
     $post = $result["data"]['post']; ?>
 
 
@@ -7,7 +8,7 @@
     <div class='formBox'>
 
             <!-- formulaire de modification d'un post déjà créé -->
-            <form action="index.php?ctrl=forum&action=editPost&id=<?= $post->getId() ?>" method="post">
+            <form action="index.php?ctrl=forum&action=editPost&id=<?= $post->getId() . "&jeton=". $_SESSION['jeton']; ?>" method="post">
 
                 <h4>Modifier mon post</h4>
                 <p class="uk-comment">

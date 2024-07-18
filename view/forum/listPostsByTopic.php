@@ -1,4 +1,5 @@
 <?php
+    require 'config.php';
     $posts = $result["data"]['posts'];
     $topic = $result["data"]['topic']; 
 ?>
@@ -67,7 +68,7 @@
     <!--Formulaire pour ajouter un post au topic -->
     <?php if (isset($_SESSION['user']) || isset($_SESSION['user']->getRole )) { ?>
         <div class='formBox'>
-            <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId() ?>" method="post">
+            <form action="index.php?ctrl=forum&action=addPost&id=<?= $topic->getId()?>&jeton= <?=$_SESSION['jeton']?>" method="post">
                 <p class="uk-text-emphasis">Répondre</p>
                 <p class="uk-comment">
                     <label for="topicPost"> Message</label><br>

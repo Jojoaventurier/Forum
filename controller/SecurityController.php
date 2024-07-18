@@ -89,6 +89,8 @@ class SecurityController extends AbstractController{
 
         if($_POST["submit"]) {      // si le formulaire est soumis
 
+            unset($_SESSION['jeton']); // protection csrf
+            
             $userManager = new UserManager();
 
             $userName = filter_input(INPUT_POST, "userName",FILTER_SANITIZE_FULL_SPECIAL_CHARS);         // filtre pour lutter contre la faille XSS

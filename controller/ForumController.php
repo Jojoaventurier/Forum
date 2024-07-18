@@ -94,7 +94,8 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager = new PostManager();
         $userManager = new UserManager();
         
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']) && isset($_GET['jeton']) && 
+        ($_GET['jeton'] == $_SESSION['jeton']))  { // jeton pour la csrf
             $user = $_SESSION['user']->getId();
             }; 
 
@@ -140,7 +141,8 @@ class ForumController extends AbstractController implements ControllerInterface{
         $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise le texte entré par l'utilisateur
         $date = $date = date('Y-m-d H:i:s'); // récupère la date de création du post
 
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']) && isset($_GET['jeton']) && 
+        ($_GET['jeton'] == $_SESSION['jeton'])) {
         $user = $_SESSION['user']->getId();
         };   
 
@@ -161,8 +163,10 @@ class ForumController extends AbstractController implements ControllerInterface{
     public function deletePost($id) {
 
         $postManager = new PostManager();
-
         $id = $_GET['id'];
+
+        if (isset($_GET['jeton']) && 
+        ($_GET['jeton'] == $_SESSION['jeton'])); // protection contre la csrf
 
         $postManager->delete($id);
 
@@ -175,6 +179,9 @@ class ForumController extends AbstractController implements ControllerInterface{
         $topicManager = new TopicManager();
 
         $id = $_GET['id'];
+
+        if (isset($_GET['jeton']) && 
+        ($_GET['jeton'] == $_SESSION['jeton'])); // protection contre la csrf
 
         $topicManager->delete($id);
 
@@ -204,6 +211,9 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager = new PostManager();
 
         $id = $_GET['id'];
+
+        if (isset($_GET['jeton']) && 
+        ($_GET['jeton'] == $_SESSION['jeton'])); // protection contre la csrf
 
         $text = filter_input(INPUT_POST, 'topicPost', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 

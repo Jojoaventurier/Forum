@@ -34,7 +34,9 @@ class AdminController extends AbstractController implements ControllerInterface{
     
             $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_FULL_SPECIAL_CHARS); // récupère et sanitise les valeurs de champs entrées par l'utilisateur
     
-            if (isset($_POST["submit"]) && strlen($categoryName) != 0) { // vérifie que l'utilisateur a entré quelque chose
+            if (isset($_POST["submit"]) && strlen($categoryName) != 0 && isset($_GET['jeton']) && 
+            ($_GET['jeton'] == $_SESSION['jeton']))  { // vérifie que l'utilisateur a entré quelque chose et protection contre la csrf
+
     
                 $category = [ 'categoryName' => $categoryName];
     
