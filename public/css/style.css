@@ -154,7 +154,7 @@ h1 {
 }
 
 .centered {
-    min-width: 980px;
+    width: 980px;
     height: 100%;
     margin: auto;
     padding: 10px;

@@ -29,7 +29,6 @@
 
     <div id="postsBoard" class="board">
         <?php 
-
         if (is_null($posts) == true ) {
             echo "Il n'y a pas encore de messages dans ce topic...";
         } else {
@@ -59,7 +58,7 @@
                             <?php  }  } ?>
                                 </div>  
                             </div>
-                        </a>
+                    
                 <?php } 
         } ?>
     </div>
