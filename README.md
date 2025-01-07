@@ -35,3 +35,11 @@ Technologies utilisées :
   - le Modèle Conceptuel de Données (MCD)
   - le Modèle Logique de Données (MLD).
 
+
+
+Aperçu du projet
+
+![forum 3](https://github.com/user-attachments/assets/3ee91397-2409-4537-b2c5-868c40dc81c5)
+![forum 2](https://github.com/user-attachments/assets/b5db9a22-90b8-47a6-a81c-40fc706c949e)
+![FORUM 1](https://github.com/user-attachments/assets/93dbaa34-cdfa-42a6-9838-037b9f630433)
+
