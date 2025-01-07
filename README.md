@@ -23,7 +23,7 @@ Fonctionnalités liées à la sécurité :
 
 Technologies utilisées :
 
-- PHP : Langage de programmation utilisé pour le développement du backend.
+- <strong>PHP<strong/> : Langage de programmation utilisé pour le développement du backend.
 
 - MySQL : Système de gestion de base de données relationnelle (SGBDR) pour stocker et gérer les données.
 
